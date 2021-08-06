@@ -65,6 +65,7 @@ dependencies {
     implementation(Libs.AndroidX.Compose.toolingPreview)
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)
     implementation(Libs.AndroidX.Activity.activity)
+    implementation(Libs.AndroidX.ConstraintLayout.constraintLayout)
     testImplementation(Libs.Test.junitCore)
     androidTestImplementation(Libs.Test.junitExt)
     androidTestImplementation(Libs.Test.espresso)

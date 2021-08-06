@@ -50,6 +50,11 @@ object Libs {
             const val activity = "androidx.activity:activity-compose:$activityVersion"
         }
 
+        object ConstraintLayout {
+            private const val constraintLayoutComposeVersion = "1.0.0-beta02"
+            const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion"
+        }
+
     }
 
     object Test {
