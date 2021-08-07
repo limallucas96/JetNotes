@@ -1,15 +1,14 @@
-package com.example.jetnotes.ui.theme.navigation
+package com.example.jetnotes.ui.navigation
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NamedNavArgument
 import androidx.navigation.compose.composable
-import com.example.jetnotes.ui.theme.screen.MainActivityScreen
+import com.example.jetnotes.ui.screen.CreateNoteScreen
+import com.example.jetnotes.ui.screen.ListNotesScreen
 
 sealed class NavigationScreen (val route: String, val arguments: List<NamedNavArgument> = listOf()) {
 
@@ -49,7 +48,7 @@ fun NavGraphBuilder.addNotesList(
 //            ) + fadeIn(animationSpec = tween(300))
 //        },
     ){
-        MainActivityScreen(Color.Red) {
+        ListNotesScreen() {
             navController.navigate(NavigationScreen.CreateNote.route)
         }
     }
@@ -82,7 +81,7 @@ fun NavGraphBuilder.addCreateNote(
 //            ) + fadeIn(animationSpec = tween(300))
 //        },
     ){
-        MainActivityScreen(Color.Blue)
+        CreateNoteScreen()
     }
 }
 
