@@ -27,7 +27,7 @@ import com.example.jetnotes.ui.theme.screen.*
 
 @ExperimentalAnimationApi
 @ExperimentalComposeUiApi
-class MainActivity : ComponentActivity() {
+class HomeActivity : ComponentActivity() {
 
     @Preview(showBackground = true)
     @Composable
