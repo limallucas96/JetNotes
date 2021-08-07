@@ -66,6 +66,7 @@ dependencies {
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)
     implementation(Libs.AndroidX.Activity.activity)
     implementation(Libs.AndroidX.ConstraintLayout.constraintLayout)
+    implementation(Libs.AndroidX.Navigation.navigation)
     testImplementation(Libs.Test.junitCore)
     androidTestImplementation(Libs.Test.junitExt)
     androidTestImplementation(Libs.Test.espresso)
