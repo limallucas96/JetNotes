@@ -7,7 +7,7 @@ import com.example.jetnotes.ui.theme.JetNotesTheme
 
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
-    JetNotesTheme() {
+    JetNotesTheme {
         Surface(color = MaterialTheme.colors.background) {
             content()
         }

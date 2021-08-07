@@ -15,6 +15,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.jetnotes.R
 
+//TODO: Create single toolbar for the whole app.
 @Composable
 fun AppToolbar(modifier: Modifier = Modifier, action: () -> Unit) {
     val context = LocalContext.current

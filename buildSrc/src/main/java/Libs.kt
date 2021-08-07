@@ -56,8 +56,11 @@ object Libs {
         }
 
         object Navigation {
-            private const val navigationVersion = "2.4.0-alpha06"
-            const val navigation = "androidx.navigation:navigation-compose:$navigationVersion"
+//            private const val navigationVersion = "2.4.0-alpha06"
+            private const val navigationAnimatedVersion = "0.16.0"
+
+//            const val navigation = "androidx.navigation:navigation-compose:$navigationVersion"
+            const val navigationAnimated = "com.google.accompanist:accompanist-navigation-animation:$navigationAnimatedVersion"
         }
 
     }
