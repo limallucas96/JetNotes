@@ -4,13 +4,13 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NamedNavArgument
 import com.google.accompanist.navigation.animation.composable
-import com.example.jetnotes.ui.screen.CreateNoteScreen
-import com.example.jetnotes.ui.screen.ListNotesScreen
+import com.example.jetnotes.ui.screen.createNote.CreateNoteScreen
+import com.example.jetnotes.ui.screen.listNotes.ListNotesScreen
+import kotlinx.coroutines.InternalCoroutinesApi
 
 sealed class NavigationScreen(val route: String, val arguments: List<NamedNavArgument> = listOf()) {
 
@@ -41,6 +41,7 @@ private fun fadeInAnimation(width: Int) = slideInHorizontally(
     )
 ) + fadeIn(animationSpec = tween(300))
 
+@OptIn(InternalCoroutinesApi::class)
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 fun NavGraphBuilder.addNotesList(

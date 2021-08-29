@@ -42,7 +42,10 @@ object Libs {
 
         object LifeCycle {
             private const val lifeCycleVersion = "2.3.1"
+            private const val composeViewModelVersion = "1.0.0-alpha07"
             const val lifeCycle = "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion"
+            const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$composeViewModelVersion"
         }
 
         object Activity {

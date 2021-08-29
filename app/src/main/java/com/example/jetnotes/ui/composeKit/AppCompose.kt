@@ -1,4 +1,4 @@
-package com.example.jetnotes.ui.screen
+package com.example.jetnotes.ui.composeKit
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface

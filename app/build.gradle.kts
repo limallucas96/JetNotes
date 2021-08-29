@@ -63,11 +63,16 @@ dependencies {
     implementation(Libs.AndroidX.Compose.ui)
     implementation(Libs.AndroidX.Compose.material)
     implementation(Libs.AndroidX.Compose.toolingPreview)
+
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)
+    implementation(Libs.AndroidX.LifeCycle.viewModel)
+    implementation(Libs.AndroidX.LifeCycle.viewModelCompose)
+
     implementation(Libs.AndroidX.Activity.activity)
     implementation(Libs.AndroidX.ConstraintLayout.constraintLayout)
 //    implementation(Libs.AndroidX.Navigation.navigation)
     implementation(Libs.AndroidX.Navigation.navigationAnimated)
+    
     testImplementation(Libs.Test.junitCore)
     androidTestImplementation(Libs.Test.junitExt)
     androidTestImplementation(Libs.Test.espresso)

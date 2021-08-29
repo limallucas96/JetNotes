@@ -6,18 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
-import com.example.jetnotes.ui.screen.ListNotesScreen
+import com.example.jetnotes.ui.screen.listNotes.ListNotesScreen
 import com.example.jetnotes.ui.theme.JetNotesTheme
 import com.example.jetnotes.ui.navigation.NavigationScreen
 import com.example.jetnotes.ui.navigation.addCreateNote
 import com.example.jetnotes.ui.navigation.addNotesList
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 @ExperimentalAnimationApi
 @ExperimentalComposeUiApi
 class HomeActivity : ComponentActivity() {

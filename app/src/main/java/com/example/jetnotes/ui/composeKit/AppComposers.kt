@@ -1,7 +1,8 @@
-package com.example.jetnotes.ui.screen
+package com.example.jetnotes.ui.composeKit
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -46,10 +47,10 @@ fun AppTextField(textState: MutableState<TextFieldValue> = remember { mutableSta
 }
 
 @Composable
-fun AppList(modifier: Modifier = Modifier) {
+fun AppList(modifier: Modifier = Modifier, notes: List<String>) {
     LazyColumn(modifier = modifier) {
-        items(100) { index ->
-            Text(text = "item $index")
+        items(notes, key = { it }) { note ->
+            Text(text = note)
         }
     }
 }
