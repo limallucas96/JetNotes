@@ -23,6 +23,24 @@ sealed class NavigationScreen(val route: String, val arguments: List<NamedNavArg
     )
 }
 
+@ExperimentalAnimationApi
+private fun fadeOutAnimation(width: Int) = slideOutHorizontally(
+    targetOffsetX = { -width },
+    animationSpec = tween(
+        durationMillis = 300,
+        easing = FastOutSlowInEasing
+    )
+) + fadeOut(animationSpec = tween(300))
+
+@ExperimentalAnimationApi
+private fun fadeInAnimation(width: Int) = slideInHorizontally(
+    initialOffsetX = { -width },
+    animationSpec = tween(
+        durationMillis = 300,
+        easing = FastOutSlowInEasing
+    )
+) + fadeIn(animationSpec = tween(300))
+
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 fun NavGraphBuilder.addNotesList(
@@ -32,22 +50,10 @@ fun NavGraphBuilder.addNotesList(
     composable(
         route = NavigationScreen.NotesList.route,
         exitTransition = { _, _ ->
-            slideOutHorizontally(
-                targetOffsetX = { -width },
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = FastOutSlowInEasing
-                )
-            ) + fadeOut(animationSpec = tween(300))
+            fadeOutAnimation(width)
         },
         popEnterTransition = { _, _ ->
-            slideInHorizontally(
-                initialOffsetX = { -width },
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = FastOutSlowInEasing
-                )
-            ) + fadeIn(animationSpec = tween(300))
+            fadeInAnimation(width)
         },
     ) {
         ListNotesScreen {
@@ -65,22 +71,10 @@ fun NavGraphBuilder.addCreateNote(
     composable(
         route = NavigationScreen.CreateNote.route,
         exitTransition = { _, _ ->
-            slideOutHorizontally(
-                targetOffsetX = { -width },
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = FastOutSlowInEasing
-                )
-            ) + fadeOut(animationSpec = tween(300))
+            fadeOutAnimation(width)
         },
         popEnterTransition = { _, _ ->
-            slideInHorizontally(
-                initialOffsetX = { -width },
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = FastOutSlowInEasing
-                )
-            ) + fadeIn(animationSpec = tween(300))
+            fadeInAnimation(width)
         },
     ) {
         CreateNoteScreen()
