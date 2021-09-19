@@ -11,10 +11,13 @@ object Libs {
     const val kotlinVersion = "1.5.10"
     const val composeVersion = "1.0.0"
 
+    private const val koinVersion = "3.1.2"
+
     object ClassPath {
         private const val gradleVersion = "7.0.0"
         const val gradle = "com.android.tools.build:gradle:$gradleVersion"
         const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        const val koin = "io.insert-koin:koin-gradle-plugin:$koinVersion"
     }
 
     object AndroidX {
@@ -59,11 +62,15 @@ object Libs {
         }
 
         object Navigation {
-//            private const val navigationVersion = "2.4.0-alpha06"
             private const val navigationAnimatedVersion = "0.16.0"
 
-//            const val navigation = "androidx.navigation:navigation-compose:$navigationVersion"
             const val navigationAnimated = "com.google.accompanist:accompanist-navigation-animation:$navigationAnimatedVersion"
+        }
+
+        object Koin {
+            const val koinDefault = "io.insert-koin:koin-android:$koinVersion"
+            const val koinCore = "io.insert-koin:koin-core:$koinVersion"
+            const val koinCompose = "io.insert-koin:koin-androidx-compose:$koinVersion"
         }
 
     }

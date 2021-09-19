@@ -70,9 +70,12 @@ dependencies {
 
     implementation(Libs.AndroidX.Activity.activity)
     implementation(Libs.AndroidX.ConstraintLayout.constraintLayout)
-//    implementation(Libs.AndroidX.Navigation.navigation)
     implementation(Libs.AndroidX.Navigation.navigationAnimated)
-    
+
+    implementation(Libs.AndroidX.Koin.koinCore)
+    implementation(Libs.AndroidX.Koin.koinDefault)
+    implementation(Libs.AndroidX.Koin.koinCompose)
+
     testImplementation(Libs.Test.junitCore)
     androidTestImplementation(Libs.Test.junitExt)
     androidTestImplementation(Libs.Test.espresso)

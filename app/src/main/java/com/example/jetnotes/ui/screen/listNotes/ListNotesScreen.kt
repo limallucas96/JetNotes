@@ -12,12 +12,13 @@ import com.example.jetnotes.ui.composeKit.AppList
 import com.example.jetnotes.ui.composeKit.AppToolbar
 import com.example.jetnotes.ui.composeKit.MyApp
 import kotlinx.coroutines.InternalCoroutinesApi
+import org.koin.androidx.compose.getViewModel
 
 @InternalCoroutinesApi
 @Composable
 fun ListNotesScreen(floatingButtonAction: () -> Unit = {}) {
 
-    val viewModel = viewModel(ListNotesScreenViewModel::class.java)
+    val viewModel = getViewModel<ListNotesScreenViewModel>()
 
     val viewState by viewModel.notesFlow.collectAsState()
 
