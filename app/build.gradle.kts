@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -75,6 +76,10 @@ dependencies {
     implementation(Libs.AndroidX.Koin.koinCore)
     implementation(Libs.AndroidX.Koin.koinDefault)
     implementation(Libs.AndroidX.Koin.koinCompose)
+
+    implementation(Libs.AndroidX.Room.roomBase)
+    kapt(Libs.AndroidX.Room.roomCompiler)
+    implementation(Libs.AndroidX.Room.roomKtx)
 
     testImplementation(Libs.Test.junitCore)
     androidTestImplementation(Libs.Test.junitExt)

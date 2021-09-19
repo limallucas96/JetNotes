@@ -73,6 +73,13 @@ object Libs {
             const val koinCompose = "io.insert-koin:koin-androidx-compose:$koinVersion"
         }
 
+        object Room {
+            private const val roomVersion = "2.3.0"
+            const val roomBase = "androidx.room:room-runtime:$roomVersion"
+            const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+            const val roomKtx = "androidx.room:room-ktx:$roomVersion"
+        }
+
     }
 
     object Test {

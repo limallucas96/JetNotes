@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.jetnotes.R
+import com.example.jetnotes.data.entities.NotesEntity
 
 //TODO: Create single toolbar for the whole app.
 @Composable

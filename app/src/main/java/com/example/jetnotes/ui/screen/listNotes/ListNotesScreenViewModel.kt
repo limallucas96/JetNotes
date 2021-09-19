@@ -2,15 +2,16 @@ package com.example.jetnotes.ui.screen.listNotes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.jetnotes.data.datasource.NotesDataSource
+import com.example.jetnotes.data.entities.NotesEntity
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @InternalCoroutinesApi
-class ListNotesScreenViewModel : ViewModel() {
-
-    private var notes = mutableListOf("Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6")
+class ListNotesScreenViewModel(private val notesDataSource: NotesDataSource) : ViewModel() {
 
     private val _notesFlow = MutableStateFlow(listOf<String>())
     val notesFlow: StateFlow<List<String>>
@@ -18,21 +19,26 @@ class ListNotesScreenViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
+            if(notesDataSource.getAllNotes().first().isEmpty()) {
+                notesDataSource.insertNote(NotesEntity(noteText = "Db note 1"))
+                notesDataSource.insertNote(NotesEntity(noteText = "Db note 2"))
+                notesDataSource.insertNote(NotesEntity(noteText = "Db note 3"))
+                notesDataSource.insertNote(NotesEntity(noteText = "Db note 4"))
+                notesDataSource.insertNote(NotesEntity(noteText = "Db note 5"))
+            }
+
             delay(DELAY_TIME)
             getNotes().collect { collectedNotes ->
-                _notesFlow.value = collectedNotes
+                _notesFlow.value = collectedNotes.map { it.noteText }
             }
         }
     }
 
-    private fun getNotes(): Flow<List<String>> {
-        return flowOf(notes)
-    }
+    private fun getNotes() = notesDataSource.getAllNotes()
 
     fun addNote() {
         viewModelScope.launch {
-            delay(10000L)
-            notes.add("new note ${notes.size}")
+            notesDataSource.insertNote(NotesEntity(noteText = "Db note ${Random(1000)}"))
         }
     }
 

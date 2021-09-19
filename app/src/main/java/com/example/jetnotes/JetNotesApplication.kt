@@ -1,6 +1,7 @@
 package com.example.jetnotes
 
 import android.app.Application
+import com.example.jetnotes.di.databaseModules
 import com.example.jetnotes.di.viewModelModules
 import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.android.ext.koin.androidContext
@@ -17,7 +18,7 @@ class JetNotesApplication : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@JetNotesApplication)
-            modules(viewModelModules)
+            modules(viewModelModules + databaseModules)
         }
     }
 }
