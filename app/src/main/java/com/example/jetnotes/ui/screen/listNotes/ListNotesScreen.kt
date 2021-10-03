@@ -3,11 +3,11 @@ package com.example.jetnotes.ui.screen.listNotes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetnotes.ui.composeKit.AppToolbarCompose
 import com.example.jetnotes.ui.composeKit.MyApp
@@ -25,6 +25,7 @@ fun DefaultPreviewListNotesScreen() {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @InternalCoroutinesApi
 @Composable
 fun ListNotesScreen(onCreateNewNote: (id: Int?) -> Unit = {}) {
@@ -40,9 +41,9 @@ fun ListNotesScreen(onCreateNewNote: (id: Int?) -> Unit = {}) {
                 AppToolbarCompose(primaryAction = {
                     onCreateNewNote.invoke(null)
                 })
-                NotesListCompose(notes = viewState) {
-                    onCreateNewNote.invoke(it.id)
-                }
+                NotesListCompose(notes = viewState,
+                    onNoteClicked = { onCreateNewNote.invoke(it.id) },
+                    onDeleteClicked = { viewModel.deleteNote(it) })
             }
         }
     }

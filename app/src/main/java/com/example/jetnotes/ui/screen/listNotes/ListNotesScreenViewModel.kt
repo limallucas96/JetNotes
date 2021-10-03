@@ -28,4 +28,10 @@ class ListNotesScreenViewModel(private val notesDataSource: NotesDataSource) : V
 
     private fun getNotes() = notesDataSource.getAllNotes()
 
+    fun deleteNote(notesEntity: NotesEntity) {
+        viewModelScope.launch {
+            notesDataSource.deleteNote(notesEntity)
+        }
+    }
+
 }

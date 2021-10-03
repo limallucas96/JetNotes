@@ -86,4 +86,6 @@ dependencies {
     androidTestImplementation(Libs.Test.espresso)
     androidTestImplementation(Libs.Test.junit)
     debugImplementation(Libs.Test.tooling)
+
+    implementation(Libs.ThirdParty.swipeToReveal)
 }

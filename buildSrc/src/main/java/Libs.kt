@@ -94,4 +94,9 @@ object Libs {
         const val tooling = "androidx.compose.ui:ui-tooling:$composeVersion"
     }
 
+    object ThirdParty {
+        private const val swipeToRevealVersion = "1.0.0"
+        const val swipeToReveal = "de.charlex.compose:revealswipe:$swipeToRevealVersion"
+    }
+
 }

@@ -1,9 +1,6 @@
 package com.example.jetnotes.data.datasource
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.jetnotes.data.entities.NotesEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,5 +15,8 @@ interface NotesDataSource {
 
     @Query("SELECT * FROM notes_entity")
     fun getAllNotes(): Flow<List<NotesEntity>>
+
+    @Delete
+    suspend fun deleteNote(note: NotesEntity)
 
 }
