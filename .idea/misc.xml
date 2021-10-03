@@ -53,7 +53,10 @@
         <entry key="../../../../../layout/compose-model-1633270192959.xml" value="0.29138513513513514" />
         <entry key="../../../../../layout/compose-model-1633274610478.xml" value="0.14629629629629629" />
         <entry key="../../../../../layout/compose-model-1633275082275.xml" value="0.45740740740740743" />
+        <entry key="app/src/debug/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3171875" />
+        <entry key="app/src/debug/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3171875" />
         <entry key="app/src/main/res/drawable/ic_note_alert.xml" value="0.203125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3359375" />
       </map>
     </option>
   </component>
