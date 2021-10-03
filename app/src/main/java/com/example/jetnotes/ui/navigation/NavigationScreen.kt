@@ -78,7 +78,7 @@ fun NavGraphBuilder.addCreateNote(
             fadeInAnimation(width)
         },
     ) {
-        CreateNoteScreen()
+        CreateNoteScreen { navController.popBackStack() }
     }
 }
 

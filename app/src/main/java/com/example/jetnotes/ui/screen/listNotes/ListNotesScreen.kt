@@ -1,63 +1,49 @@
 package com.example.jetnotes.ui.screen.listNotes
 
-import androidx.compose.foundation.layout.fillMaxSize
+import android.widget.Toast
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.jetnotes.ui.composeKit.AppFloatingActionButton
-import com.example.jetnotes.ui.composeKit.AppList
-import com.example.jetnotes.ui.composeKit.AppToolbar
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetnotes.ui.composeKit.NotesListCompose
+import com.example.jetnotes.ui.composeKit.AppToolbarCompose
 import com.example.jetnotes.ui.composeKit.MyApp
+import com.example.jetnotes.ui.theme.JetNotesTheme
 import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.androidx.compose.getViewModel
+import kotlin.coroutines.coroutineContext
+
+@InternalCoroutinesApi
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreviewListNotesScreen() {
+    JetNotesTheme {
+        ListNotesScreen {}
+    }
+}
 
 @InternalCoroutinesApi
 @Composable
-fun ListNotesScreen(floatingButtonAction: () -> Unit = {}) {
-
+fun ListNotesScreen(onCreateNewNote: () -> Unit = {}) {
+    val context = LocalContext.current
     val viewModel = getViewModel<ListNotesScreenViewModel>()
 
     val viewState by viewModel.notesFlow.collectAsState()
 
     MyApp {
-        ConstraintLayout(
-            modifier = Modifier
-                .fillMaxSize()
+        Box(
+            Modifier.fillMaxWidth()
         ) {
-            val (appToolbar, appList, appFloating) = createRefs()
-
-            AppToolbar(modifier = Modifier
-                .constrainAs(appToolbar) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }) {
-                //TODO: Toolbar action
-            }
-
-            AppList(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .constrainAs(appList) {
-                        top.linkTo(appToolbar.bottom)
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end)
-                    },
-                notes = viewState
-            )
-
-            AppFloatingActionButton(
-                modifier = Modifier
-                    .constrainAs(appFloating) {
-                        end.linkTo(parent.end)
-                        bottom.linkTo(parent.bottom)
-                    }
-            ) {
-                viewModel.addNote()
-                floatingButtonAction.invoke()
+            Column {
+                AppToolbarCompose(primaryAction = { onCreateNewNote.invoke() })
+                NotesListCompose(notes = viewState) {
+                    Toast.makeText(context, "a", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

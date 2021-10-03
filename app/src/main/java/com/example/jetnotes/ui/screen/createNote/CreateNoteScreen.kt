@@ -2,16 +2,29 @@ package com.example.jetnotes.ui.screen.createNote
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import com.example.jetnotes.ui.composeKit.AppTextField
-import com.example.jetnotes.ui.composeKit.AppToolbar
-import com.example.jetnotes.ui.composeKit.MyApp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetnotes.ui.composeKit.*
+import com.example.jetnotes.ui.theme.JetNotesTheme
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreviewCreateNoteScreen() {
+    JetNotesTheme {
+        CreateNoteScreen {}
+    }
+}
 
 @Composable
-fun CreateNoteScreen() {
+fun CreateNoteScreen(onSaveClicked: () -> Unit) {
     MyApp {
         Column {
-            AppToolbar {}
-            AppTextField()
+            AppToolbarCompose(
+                secondaryAction = {
+                    //TODO: save note
+                    onSaveClicked.invoke()
+                }
+            )
+            NewNoteTextField()
         }
     }
 }
