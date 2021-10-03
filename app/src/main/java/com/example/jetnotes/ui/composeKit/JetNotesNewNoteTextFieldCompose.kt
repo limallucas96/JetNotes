@@ -22,12 +22,12 @@ import com.example.jetnotes.ui.theme.JetNotesTheme
 @Composable
 fun NewNoteTextFieldPreview() {
     JetNotesTheme {
-        NewNoteTextField()
+        NewNoteTextField(remember { mutableStateOf(TextFieldValue()) })
     }
 }
 
 @Composable
-fun NewNoteTextField(textState: MutableState<TextFieldValue> = remember { mutableStateOf(TextFieldValue()) }) {
+fun NewNoteTextField(textState: MutableState<TextFieldValue>) {
     Surface(elevation = 4.dp) {
         TextField(
             value = textState.value,

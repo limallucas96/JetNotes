@@ -1,6 +1,5 @@
 package com.example.jetnotes.ui.composeKit
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.jetnotes.data.entities.NotesEntity
 import com.example.jetnotes.ui.theme.JetNotesTheme
 
 @Preview(showBackground = true)
@@ -20,7 +20,7 @@ fun NotesListComposePreview() {
 }
 
 @Composable
-fun NotesListCompose(notes: List<String>, onNoteClicked: () -> Unit) {
+fun NotesListCompose(notes: List<NotesEntity>, onNoteClicked: (NotesEntity) -> Unit) {
     if(notes.isEmpty()) {
         EmptyStateCompose()
     } else {
@@ -30,7 +30,7 @@ fun NotesListCompose(notes: List<String>, onNoteClicked: () -> Unit) {
             contentPadding = PaddingValues(16.dp)
         ) {
             items(notes, key = { it }) { note ->
-                NoteCardCompose(note = note) { onNoteClicked.invoke() }
+                NoteCardCompose(note = note.noteText) { onNoteClicked.invoke(note) }
             }
         }
     }

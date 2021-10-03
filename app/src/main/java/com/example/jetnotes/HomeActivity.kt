@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.navigation.compose.navArgument
+import androidx.navigation.findNavController
 import com.example.jetnotes.ui.navigation.NavigationScreen
 import com.example.jetnotes.ui.navigation.addCreateNote
 import com.example.jetnotes.ui.navigation.addNotesList

@@ -1,5 +1,6 @@
 package com.example.jetnotes.ui.navigation
 
+import android.os.Bundle
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -7,9 +8,9 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NamedNavArgument
-import com.google.accompanist.navigation.animation.composable
 import com.example.jetnotes.ui.screen.createNote.CreateNoteScreen
 import com.example.jetnotes.ui.screen.listNotes.ListNotesScreen
+import com.google.accompanist.navigation.animation.composable
 import kotlinx.coroutines.InternalCoroutinesApi
 
 sealed class NavigationScreen(val route: String, val arguments: List<NamedNavArgument> = listOf()) {
@@ -57,7 +58,8 @@ fun NavGraphBuilder.addNotesList(
             fadeInAnimation(width)
         },
     ) {
-        ListNotesScreen {
+        ListNotesScreen { noteId ->
+            navController.currentBackStackEntry?.arguments = noteId?.let { Bundle().apply { putInt("NOTE_ID", it) } }
             navController.navigate(NavigationScreen.CreateNote.route)
         }
     }
@@ -78,7 +80,7 @@ fun NavGraphBuilder.addCreateNote(
             fadeInAnimation(width)
         },
     ) {
-        CreateNoteScreen { navController.popBackStack() }
+        CreateNoteScreen(navController)
     }
 }
 

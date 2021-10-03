@@ -2,6 +2,7 @@ package com.example.jetnotes.di
 
 import androidx.room.Room
 import com.example.jetnotes.data.AppDatabase
+import com.example.jetnotes.ui.screen.createNote.CreateNoteScreenViewModel
 import com.example.jetnotes.ui.screen.listNotes.ListNotesScreenViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.android.ext.koin.androidContext
@@ -11,6 +12,7 @@ import org.koin.dsl.module
 @InternalCoroutinesApi
 val viewModelModules = module {
     viewModel { ListNotesScreenViewModel(get()) }
+    viewModel { CreateNoteScreenViewModel(get()) }
 }
 
 val databaseModules = module {
