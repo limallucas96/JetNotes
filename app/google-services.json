@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "412539102182",
+    "project_id": "jetnotes-5ea78",
+    "storage_bucket": "jetnotes-5ea78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412539102182:android:fb32414696ce0d095f2c27",
+        "android_client_info": {
+          "package_name": "com.example.jetnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412539102182-hv1v7lt0d4uukvua7ra87kv12kph3frc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jetnotes",
+            "certificate_hash": "59a9a566af972803b4cbd06288328fdadd7fc5f4"
+          }
+        },
+        {
+          "client_id": "412539102182-setpfh087nd716vfilhehdaeqh80ak3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSyB4muo92-7b1dEVb1ZoXtQytpwJQpfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412539102182-setpfh087nd716vfilhehdaeqh80ak3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -80,6 +81,9 @@ dependencies {
     implementation(Libs.AndroidX.Room.roomBase)
     kapt(Libs.AndroidX.Room.roomCompiler)
     implementation(Libs.AndroidX.Room.roomKtx)
+
+    platform(Libs.AndroidX.Firebase.firebaseBom)
+    implementation(Libs.AndroidX.Firebase.firebaseAnalytics)
 
     testImplementation(Libs.Test.junitCore)
     androidTestImplementation(Libs.Test.junitExt)

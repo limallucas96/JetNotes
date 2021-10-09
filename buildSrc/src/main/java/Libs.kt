@@ -15,9 +15,11 @@ object Libs {
 
     object ClassPath {
         private const val gradleVersion = "7.0.0"
+        private const val googleServicesVersion = "4.3.10"
         const val gradle = "com.android.tools.build:gradle:$gradleVersion"
         const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val koin = "io.insert-koin:koin-gradle-plugin:$koinVersion"
+        const val googleServices = "com.google.gms:google-services:$googleServicesVersion"
     }
 
     object AndroidX {
@@ -78,6 +80,13 @@ object Libs {
             const val roomBase = "androidx.room:room-runtime:$roomVersion"
             const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
             const val roomKtx = "androidx.room:room-ktx:$roomVersion"
+        }
+
+        object Firebase {
+            private const val bomVersion = "28.4.2"
+            private const val analyticsVersion = "19.0.2"
+            const val firebaseBom = "com.google.firebase:firebase-bom:$bomVersion"
+            const val firebaseAnalytics = "com.google.firebase:firebase-analytics:$analyticsVersion"
         }
 
     }
