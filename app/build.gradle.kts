@@ -59,6 +59,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":data"))
+
     implementation(Libs.AndroidX.Core.ktx)
     implementation(Libs.AndroidX.Appcompat.compat)
     implementation(Libs.AndroidX.Material.material)

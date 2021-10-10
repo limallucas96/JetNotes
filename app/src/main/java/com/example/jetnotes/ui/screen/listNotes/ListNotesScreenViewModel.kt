@@ -2,13 +2,13 @@ package com.example.jetnotes.ui.screen.listNotes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jetnotes.data.datasource.NotesDataSource
-import com.example.jetnotes.data.entities.NotesEntity
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlin.random.Random
+import local.datasource.NotesDataSource
+import local.entities.NotesEntity
 
 @InternalCoroutinesApi
 class ListNotesScreenViewModel(private val notesDataSource: NotesDataSource) : ViewModel() {

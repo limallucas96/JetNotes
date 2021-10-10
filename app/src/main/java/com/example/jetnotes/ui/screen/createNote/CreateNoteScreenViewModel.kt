@@ -2,12 +2,12 @@ package com.example.jetnotes.ui.screen.createNote
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jetnotes.data.datasource.NotesDataSource
-import com.example.jetnotes.data.entities.NotesEntity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import local.datasource.NotesDataSource
+import local.entities.NotesEntity
 
 class CreateNoteScreenViewModel(private val notesDataSource: NotesDataSource) : ViewModel() {
 

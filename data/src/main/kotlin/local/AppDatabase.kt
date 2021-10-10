@@ -1,10 +1,9 @@
-package com.example.jetnotes.data
+package local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.jetnotes.data.datasource.NotesDataSource
-import com.example.jetnotes.data.entities.NotesEntity
+import local.datasource.NotesDataSource
+import local.entities.NotesEntity
 
 @Database(
     entities = [
