@@ -7,3 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "JetNotes"
 include(":app")
+include(":data")
+include(":domain")

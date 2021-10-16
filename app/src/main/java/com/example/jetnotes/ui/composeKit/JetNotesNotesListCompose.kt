@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jetnotes.data.entities.NotesEntity
 import com.example.jetnotes.ui.theme.JetNotesTheme
+import entities.Notes
 
 @ExperimentalMaterialApi
 @Preview(showBackground = true)
@@ -24,9 +24,9 @@ fun NotesListComposePreview() {
 @ExperimentalMaterialApi
 @Composable
 fun NotesListCompose(
-    notes: List<NotesEntity>,
-    onNoteClicked: (NotesEntity) -> Unit,
-    onDeleteClicked: (NotesEntity) -> Unit
+    notes: List<Notes>,
+    onNoteClicked: (Notes) -> Unit,
+    onDeleteClicked: (Notes) -> Unit
 ) {
     if (notes.isEmpty()) {
         EmptyStateCompose()

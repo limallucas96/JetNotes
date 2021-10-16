@@ -59,6 +59,10 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
     implementation(Libs.AndroidX.Core.ktx)
     implementation(Libs.AndroidX.Appcompat.compat)
     implementation(Libs.AndroidX.Material.material)
@@ -75,7 +79,7 @@ dependencies {
     implementation(Libs.AndroidX.Navigation.navigationAnimated)
 
     implementation(Libs.AndroidX.Koin.koinCore)
-    implementation(Libs.AndroidX.Koin.koinDefault)
+    implementation(Libs.AndroidX.Koin.koinAndroid)
     implementation(Libs.AndroidX.Koin.koinCompose)
 
     implementation(Libs.AndroidX.Room.roomBase)

@@ -1,13 +1,14 @@
 package com.example.jetnotes.ui.screen.createNote
 
-import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.example.jetnotes.ui.composeKit.*
+import com.example.jetnotes.ui.composeKit.AppToolbarCompose
+import com.example.jetnotes.ui.composeKit.MyApp
+import com.example.jetnotes.ui.composeKit.NewNoteTextField
 import com.example.jetnotes.ui.theme.JetNotesTheme
 import org.koin.androidx.compose.getViewModel
 
