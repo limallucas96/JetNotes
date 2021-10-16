@@ -1,9 +1,9 @@
-package local
+package database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import local.datasource.NotesDataSource
-import local.entities.NotesEntity
+import database.datasource.NotesDataSource
+import database.entities.NotesEntity
 
 @Database(
     entities = [

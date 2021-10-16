@@ -2,14 +2,14 @@ package com.example.jetnotes.ui.screen.createNote
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import entities.Notes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import local.datasource.NotesDataSource
-import local.entities.NotesEntity
+import usecases.notes.NotesUseCaseContract
 
-class CreateNoteScreenViewModel(private val notesDataSource: NotesDataSource) : ViewModel() {
+class CreateNoteScreenViewModel(private val notesUseCase: NotesUseCaseContract) : ViewModel() {
 
     private var _notesTextFlow = MutableStateFlow(String())
     private var _noteId: Int? = null
@@ -21,10 +21,10 @@ class CreateNoteScreenViewModel(private val notesDataSource: NotesDataSource) : 
     fun saveNoteOrUpdateNote(noteText: String) {
         if (noteText.trim().isNotEmpty()) {
             viewModelScope.launch {
-                val notesEntity = _noteId?.let {
-                    NotesEntity(id = it, noteText = noteText)
-                } ?: NotesEntity(noteText = noteText)
-                notesDataSource.insertNote(notesEntity)
+                val notes = _noteId?.let {
+                    Notes(id = it, noteText = noteText)
+                } ?: Notes(noteText = noteText)
+                notesUseCase.insertNote(notes)
             }
         }
     }
@@ -32,7 +32,7 @@ class CreateNoteScreenViewModel(private val notesDataSource: NotesDataSource) : 
     fun getNoteById(noteId: Int) {
         _noteId = noteId
         viewModelScope.launch {
-            notesDataSource.getNoteById(noteId).collect { notes ->
+            notesUseCase.getNoteById(noteId).collect { notes ->
                 notes.firstOrNull()?.noteText?.let { noteText ->
                     _notesTextFlow.value = noteText
                 }

@@ -24,6 +24,11 @@ object Libs {
 
     object AndroidX {
 
+        object Kotlin {
+            private const val coroutinesCoreVersion = "1.5.2"
+            const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
+        }
+
         object Core {
             private const val coreKtxVersion = "1.6.0"
             const val ktx = "androidx.core:core-ktx:$coreKtxVersion"
@@ -70,7 +75,7 @@ object Libs {
         }
 
         object Koin {
-            const val koinDefault = "io.insert-koin:koin-android:$koinVersion"
+            const val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
             const val koinCore = "io.insert-koin:koin-core:$koinVersion"
             const val koinCompose = "io.insert-koin:koin-androidx-compose:$koinVersion"
         }

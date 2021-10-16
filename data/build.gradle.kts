@@ -47,6 +47,8 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
+
     // ROOM
     implementation(Libs.AndroidX.Room.roomBase)
     kapt(Libs.AndroidX.Room.roomCompiler)
@@ -54,7 +56,7 @@ dependencies {
 
     // KOIN
     implementation(Libs.AndroidX.Koin.koinCore)
-    implementation(Libs.AndroidX.Koin.koinDefault)
+    implementation(Libs.AndroidX.Koin.koinAndroid)
 
 //    implementation 'androidx.core:core-ktx:1.6.0'
 //    implementation 'androidx.appcompat:appcompat:1.3.1'

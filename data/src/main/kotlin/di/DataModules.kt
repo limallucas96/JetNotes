@@ -1,9 +1,11 @@
 package di
 
 import androidx.room.Room
-import local.AppDatabase
+import database.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import repository.NotesRepositoryContract
+import repository.local.NotesRepository
 
 private val dataBaseModules = module {
 
@@ -11,7 +13,8 @@ private val dataBaseModules = module {
         Room.databaseBuilder(
             androidContext(),
             AppDatabase::class.java,
-            "DATA_BASE_NAME")
+            "DATA_BASE_NAME"
+        )
             .fallbackToDestructiveMigration()
             .build()
     }
@@ -20,4 +23,12 @@ private val dataBaseModules = module {
 
 }
 
-val dataModules = listOf(dataBaseModules)
+private val repositoryModules = module {
+
+    single<NotesRepositoryContract> {
+        NotesRepository(notesDataSource = get())
+    }
+
+}
+
+val dataModules = listOf(dataBaseModules, repositoryModules)

@@ -1,8 +1,8 @@
-package local.datasource
+package database.datasource
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import local.entities.NotesEntity
+import database.entities.NotesEntity
 
 @Dao
 interface NotesDataSource {
