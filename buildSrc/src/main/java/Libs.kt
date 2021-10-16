@@ -100,12 +100,16 @@ object Libs {
         private const val junitCoreVersion = "4.13.2"
         private const val junitExtVersion = "1.1.3"
         private const val espressoVersion = "3.4.0"
+        private const val coroutinesTestVersion = "1.5.0"
+        private const val mockitoTestingVersion = "3.2.0"
 
         const val junitCore = "junit:junit:$junitCoreVersion"
         const val junitExt = "androidx.test.ext:junit:$junitExtVersion"
         const val espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
         const val junit = "androidx.compose.ui:ui-test-junit4:$composeVersion"
         const val tooling = "androidx.compose.ui:ui-tooling:$composeVersion"
+        const val coroutinesTesting = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+        const val mockitoTesting = "org.mockito.kotlin:mockito-kotlin:$mockitoTestingVersion"
     }
 
     object ThirdParty {

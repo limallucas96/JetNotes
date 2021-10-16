@@ -8,7 +8,7 @@ import database.entities.NotesEntity
 interface NotesDataSource {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(note: NotesEntity)
+    suspend fun insertNote(note: NotesEntity): Long
 
     @Query("SELECT * FROM notes_entity WHERE id = :noteId")
     fun getNoteById(noteId: Int): Flow<List<NotesEntity>>

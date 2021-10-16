@@ -60,5 +60,7 @@ dependencies {
 
     //TEST
     testImplementation(Libs.Test.junitCore)
+    testImplementation(Libs.Test.coroutinesTesting)
+    testImplementation(Libs.Test.mockitoTesting)
 
 }
