@@ -1,25 +1,18 @@
 package com.example.data.notes
 
-import com.example.data.base.BaseDataTest
-import com.example.data.notes.NotesEntityMock.getNonEmptyNoteListMock
-import com.example.data.notes.NotesEntityMock.getNoteIdMock
-import com.example.data.notes.NotesEntityMock.getNoteMock
-import com.example.data.notes.NotesEntityMock.getNotesEntityMock
-import com.example.data.notes.NotesEntityMock.getSuccessMock
-import database.datasource.NotesDataSource
-import database.entities.NotesEntity
+import com.example.test.base.BaseUseCaseTest
+import com.example.data.notes.NotesMockProvider.getNoteIdMock
+import com.example.data.notes.NotesMockProvider.getNoteMock
 import entities.Notes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.whenever
 import repository.local.NotesRepository
 
 @ExperimentalCoroutinesApi
-class NotesRepositoryTest : BaseDataTest() {
+class NotesRepositoryTest : BaseUseCaseTest() {
 
     private lateinit var notesRepository: NotesRepository
     private lateinit var fakeNotesDataSource: FakeNotesDataSource

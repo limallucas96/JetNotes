@@ -10,8 +10,8 @@ import repository.NotesRepositoryContract
 
 class NotesRepository(private val notesDataSource: NotesDataSource) : NotesRepositoryContract {
 
-    override suspend fun insertNote(note: Notes) : Long {
-        return notesDataSource.insertNote(note.toNotesEntity())
+    override suspend fun insertNote(note: Notes) {
+        notesDataSource.insertNote(note.toNotesEntity())
     }
 
     override fun getNoteById(noteId: Int): Flow<List<Notes>> {

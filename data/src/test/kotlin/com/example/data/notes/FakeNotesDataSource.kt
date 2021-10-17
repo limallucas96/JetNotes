@@ -13,9 +13,8 @@ class FakeNotesDataSource : NotesDataSource {
         _fakeNotes.clear()
     }
 
-    override suspend fun insertNote(note: NotesEntity): Long {
+    override suspend fun insertNote(note: NotesEntity) {
         _fakeNotes.add(note)
-        return 1L
     }
 
     override fun getNoteById(noteId: Int): Flow<List<NotesEntity>> {
