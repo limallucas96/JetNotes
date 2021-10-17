@@ -8,6 +8,7 @@ import com.example.data.notes.NotesEntityMock.getNotesEntityMock
 import com.example.data.notes.NotesEntityMock.getSuccessMock
 import database.datasource.NotesDataSource
 import database.entities.NotesEntity
+import entities.Notes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.test.runBlockingTest
@@ -21,56 +22,64 @@ import repository.local.NotesRepository
 class NotesRepositoryTest : BaseDataTest() {
 
     private lateinit var notesRepository: NotesRepository
-    private lateinit var notesDataSource: NotesDataSource
+    private lateinit var fakeNotesDataSource: FakeNotesDataSource
 
     @Before
     fun setup() {
-        notesDataSource = mock()
-        notesRepository = NotesRepository(notesDataSource)
-    }
-
-    /** TODO
-
-     1. Test void methods
-     2. Test replace methods
-     3.
-
-     */
-
-    @Test
-    fun `should insert one note`() = runBlockingTest {
-        whenever(notesDataSource.insertNote(getNotesEntityMock())).thenReturn(getSuccessMock())
-        val dbNote = notesRepository.insertNote(getNoteMock())
-        assert(dbNote == getSuccessMock())
+        fakeNotesDataSource = FakeNotesDataSource()
+        notesRepository = NotesRepository(fakeNotesDataSource)
+        fakeNotesDataSource.clearNotes()
     }
 
     @Test
     fun `should have at least one record in database`() = runBlockingTest {
-        whenever(notesDataSource.getAllNotes()).thenReturn(getNonEmptyNoteListMock())
-        val dbNotes = notesRepository.getAllNotes()
-        assert(dbNotes.first().isNotEmpty())
+        notesRepository.insertNote(getNoteMock())
+        val dbNotes = notesRepository.getAllNotes().firstOrNull() ?: listOf()
+        assert(dbNotes.isNotEmpty())
     }
 
     @Test
     fun `should have at least one record in database that matches given id`() = runBlockingTest {
-        val noteIdMock = getNoteIdMock()
-        whenever(notesDataSource.getNoteById(noteIdMock)).thenReturn(getNonEmptyNoteListMock())
-        val dbNotes = notesRepository.getNoteById(noteIdMock)
-        assert(dbNotes.first().firstOrNull { it.id == noteIdMock } != null)
+
+        val expectedId = 77
+
+        (1..100).forEachIndexed { index, i ->
+            notesRepository.insertNote(Notes(index, "$i"))
+        }
+
+        val dbNotes = notesRepository.getNoteById(expectedId).firstOrNull() ?: listOf()
+
+        assert(dbNotes.firstOrNull { it.id == expectedId } != null)
     }
 
     @Test
     fun `should NOT have any note in database`() = runBlockingTest {
-        whenever(notesDataSource.getAllNotes()).thenReturn(flowOf())
-        val dbNotes = notesRepository.getAllNotes()
-        assert(dbNotes.toSet().isEmpty())
+        val dbNotes = notesRepository.getAllNotes().firstOrNull() ?: listOf()
+        assert(dbNotes.isEmpty())
     }
 
     @Test
     fun `should NOT have any note in database matching given id`() = runBlockingTest {
-        whenever(notesDataSource.getAllNotes()).thenReturn(flowOf())
-        val dbNotes = notesRepository.getAllNotes()
-        assert(dbNotes.toSet().isEmpty())
+        val dbNotes = notesRepository.getNoteById(getNoteIdMock()).firstOrNull() ?: listOf()
+        assert(dbNotes.isEmpty())
+    }
+
+    @Test
+    fun `should delete given note`() = runBlockingTest {
+
+        val note1 = Notes(1, "note mock 1")
+        val note2 = Notes(2, "note mock 2")
+        val note3 = Notes(3, "note mock 3")
+
+        notesRepository.insertNote(note1)
+        notesRepository.insertNote(note2)
+        notesRepository.insertNote(note3)
+
+        notesRepository.deleteNote(note2)
+
+        val dbNotes = notesRepository.getAllNotes().firstOrNull() ?: listOf()
+
+        assert(dbNotes.containsAll(listOf(note2)).not())
     }
 }
 
