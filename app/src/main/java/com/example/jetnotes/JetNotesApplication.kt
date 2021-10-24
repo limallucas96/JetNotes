@@ -9,7 +9,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 @InternalCoroutinesApi
-class JetNotesApplication : Application() {
+open class JetNotesApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,7 +19,10 @@ class JetNotesApplication : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@JetNotesApplication)
-            modules(appModules + domainModules + dataModules)
+            modules(provideModules())
         }
     }
+
+    open fun provideModules() = appModules + domainModules + dataModules
+
 }

@@ -102,6 +102,8 @@ object Libs {
         private const val espressoVersion = "3.4.0"
         private const val coroutinesTestVersion = "1.5.0"
         private const val mockitoTestingVersion = "3.2.0"
+        private const val androidXTestCoreVersion = "1.0.0"
+        private const val androidXTestRulesVersion = "1.1.0"
 
         const val junitCore = "junit:junit:$junitCoreVersion"
         const val junitExt = "androidx.test.ext:junit:$junitExtVersion"
@@ -110,6 +112,10 @@ object Libs {
         const val tooling = "androidx.compose.ui:ui-tooling:$composeVersion"
         const val coroutinesTesting = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
         const val mockitoTesting = "org.mockito.kotlin:mockito-kotlin:$mockitoTestingVersion"
+        const val koinTestingTools = "io.insert-koin:koin-test:$koinVersion"
+        const val koinJUnit = "io.insert-koin:koin-test-junit4:$koinVersion"
+        const val androidXTestCore = "androidx.test:core:$androidXTestCoreVersion"
+        const val androidXTestRules = "androidx.test:rules:$androidXTestRulesVersion"
     }
 
     object ThirdParty {
