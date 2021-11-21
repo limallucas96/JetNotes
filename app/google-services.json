@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:412539102182:android:fb32414696ce0d095f2c27",
+        "mobilesdk_app_id": "1:412539102182:android:4e74432a0d4899475f2c27",
         "android_client_info": {
-          "package_name": "com.example.jetnotes"
+          "package_name": "com.lls.jetnotes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "412539102182-hv1v7lt0d4uukvua7ra87kv12kph3frc.apps.googleusercontent.com",
+          "client_id": "412539102182-80rglhqge67sruubaq1bgjtket715r3d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.jetnotes",
+            "package_name": "com.lls.jetnotes",
             "certificate_hash": "59a9a566af972803b4cbd06288328fdadd7fc5f4"
           }
         },
