@@ -35,7 +35,7 @@ fun EmptyStateCompose() {
             Icon(
                 painter = painterResource(id = R.drawable.ic_note_alert),
                 contentDescription = "",
-                tint = Color.White,
+                tint = Color.Gray,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)

@@ -36,8 +36,17 @@ import org.koin.test.KoinTestRule
 @RunWith(AndroidJUnit4::class)
 class ListNotesScreenTest : KoinTest {
 
+    /* TODO
+     *  1. test empty state
+     *  2. test list
+     *  3. test dark/light mode
+     *
+     */
+
+
 //    @Rule
 //    val koinRule = KoinTestRule.create()
+
 
     @get:Rule
     val composeRule = createAndroidComposeRule<HomeActivity>()
