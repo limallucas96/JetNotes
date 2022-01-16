@@ -1,18 +1,18 @@
 package com.example.data.notes
 
-import com.example.test.base.BaseUseCaseTest
+import com.example.data.base.BaseDataTest
 import com.example.data.notes.NotesMockProvider.getNoteIdMock
 import com.example.data.notes.NotesMockProvider.getNoteMock
 import entities.Notes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import repository.local.NotesRepository
 
 @ExperimentalCoroutinesApi
-class NotesRepositoryTest : BaseUseCaseTest() {
+class NotesRepositoryTest : BaseDataTest() {
 
     private lateinit var notesRepository: NotesRepository
     private lateinit var fakeNotesDataSource: FakeNotesDataSource
