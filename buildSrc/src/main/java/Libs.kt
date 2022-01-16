@@ -97,6 +97,7 @@ object Libs {
     }
 
     object Test {
+
         private const val junitCoreVersion = "4.13.2"
         private const val junitExtVersion = "1.1.3"
         private const val espressoVersion = "3.4.0"
