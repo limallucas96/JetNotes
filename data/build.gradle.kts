@@ -14,8 +14,6 @@ android {
 //        versionCode = Libs.versionCode
 //        versionName = Libs.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -60,5 +58,7 @@ dependencies {
 
     //TEST
     testImplementation(Libs.Test.junitCore)
+    testImplementation(Libs.Test.coroutinesTesting)
+    testImplementation(Libs.Test.mockitoTesting)
 
 }

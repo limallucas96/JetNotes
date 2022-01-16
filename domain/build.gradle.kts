@@ -16,4 +16,9 @@ dependencies {
     //COROUTINES
     implementation(Libs.AndroidX.Kotlin.coroutinesCore)
 
+    //TEST
+    implementation(Libs.Test.junitCore)
+    testImplementation(Libs.Test.coroutinesTesting)
+    testImplementation(Libs.Test.mockitoTesting)
+
 }

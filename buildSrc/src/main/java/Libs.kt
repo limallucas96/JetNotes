@@ -3,7 +3,7 @@ object Libs {
     const val compileSdk = 30
     const val minSdk = 23
     const val targetSdk = 30
-    const val versionCode = 1.1
+    const val versionCode = 1
     const val versionName = "1.1"
 
     const val jvtTarget = "1.8"
@@ -97,15 +97,26 @@ object Libs {
     }
 
     object Test {
+
         private const val junitCoreVersion = "4.13.2"
         private const val junitExtVersion = "1.1.3"
         private const val espressoVersion = "3.4.0"
+        private const val coroutinesTestVersion = "1.5.0"
+        private const val mockitoTestingVersion = "3.2.0"
+        private const val androidXTestCoreVersion = "1.0.0"
+        private const val androidXTestRulesVersion = "1.1.0"
 
         const val junitCore = "junit:junit:$junitCoreVersion"
         const val junitExt = "androidx.test.ext:junit:$junitExtVersion"
         const val espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
         const val junit = "androidx.compose.ui:ui-test-junit4:$composeVersion"
         const val tooling = "androidx.compose.ui:ui-tooling:$composeVersion"
+        const val coroutinesTesting = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+        const val mockitoTesting = "org.mockito.kotlin:mockito-kotlin:$mockitoTestingVersion"
+        const val koinTestingTools = "io.insert-koin:koin-test:$koinVersion"
+        const val koinJUnit = "io.insert-koin:koin-test-junit4:$koinVersion"
+        const val androidXTestCore = "androidx.test:core:$androidXTestCoreVersion"
+        const val androidXTestRules = "androidx.test:rules:$androidXTestRulesVersion"
     }
 
     object ThirdParty {

@@ -16,7 +16,7 @@ android {
         versionCode = Libs.versionCode
         versionName = Libs.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.jetnotes.base.KoinTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -94,6 +94,11 @@ dependencies {
     androidTestImplementation(Libs.Test.espresso)
     androidTestImplementation(Libs.Test.junit)
     debugImplementation(Libs.Test.tooling)
+
+    testImplementation(Libs.Test.koinTestingTools)
+    androidTestImplementation(Libs.Test.koinJUnit)
+    androidTestImplementation(Libs.Test.androidXTestCore)
+    androidTestImplementation(Libs.Test.androidXTestRules)
 
     implementation(Libs.ThirdParty.swipeToReveal)
 }
