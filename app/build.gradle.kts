@@ -10,7 +10,7 @@ android {
     compileSdk = Libs.compileSdk
 
     defaultConfig {
-        applicationId = "com.example.jetnotes"
+        applicationId = "com.lls.jetnotes"
         minSdk = Libs.minSdk
         targetSdk = Libs.targetSdk
         versionCode = Libs.versionCode
