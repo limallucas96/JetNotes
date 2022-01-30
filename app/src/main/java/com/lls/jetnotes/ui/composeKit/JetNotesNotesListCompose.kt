@@ -32,9 +32,7 @@ fun NotesListCompose(
         EmptyStateCompose()
     } else {
         LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth(),
-            contentPadding = PaddingValues(16.dp)
+            modifier = Modifier.fillMaxWidth()
         ) {
             items(notes, key = { it }) { note ->
                 NoteCardCompose(

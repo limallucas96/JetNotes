@@ -2,5 +2,6 @@
     <string name="app_name">JetNotes</string>
 
     <string name="empty_notes">No notes were found!</string>
+    <string name="notes">Notes</string>
 
 </resources>
