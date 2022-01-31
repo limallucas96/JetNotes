@@ -18,10 +18,19 @@ import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
 
 @ExperimentalMaterialApi
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun NoteCardComposePreview() {
     JetNotesTheme {
+        NoteCardCompose("Note Preview", {}, {})
+    }
+}
+
+@ExperimentalMaterialApi
+@Preview
+@Composable
+fun NoteCardComposePreviewDark() {
+    JetNotesTheme(darkTheme = true) {
         NoteCardCompose("Note Preview", {}, {})
     }
 }
@@ -54,17 +63,15 @@ fun NoteCardCompose(
                             .absolutePadding(bottom = 32.dp)
                             .align(Alignment.TopStart),
                         text = note,
-                        style = MaterialTheme.typography.h4,
+                        style = MaterialTheme.typography.body1,
                         color = MaterialTheme.colors.onSurface,
-                        fontSize = 12.sp
                     )
 
                     Text(
                         modifier = Modifier.align(Alignment.BottomEnd),
                         text = "02/08/2020",
-                        style = MaterialTheme.typography.h4,
+                        style = MaterialTheme.typography.caption,
                         color = MaterialTheme.colors.onSurface,
-                        fontSize = 12.sp
                     )
                 }
             }
