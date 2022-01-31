@@ -9,7 +9,7 @@ import database.entities.NotesEntity
     entities = [
         (NotesEntity::class),
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 
