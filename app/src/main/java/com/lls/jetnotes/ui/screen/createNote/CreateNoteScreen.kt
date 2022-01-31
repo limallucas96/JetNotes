@@ -1,16 +1,19 @@
 package com.lls.jetnotes.ui.screen.createNote
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.lls.jetnotes.ui.composeKit.AppToolbarCompose
-import com.lls.jetnotes.ui.composeKit.MyApp
-import com.lls.jetnotes.ui.composeKit.NewNoteTextField
 import com.lls.jetnotes.ui.theme.JetNotesTheme
 import org.koin.androidx.compose.getViewModel
+import com.lls.jetnotes.R
+import com.lls.jetnotes.ui.composeKit.*
 
 @Preview(showBackground = true)
 @Composable
@@ -20,6 +23,7 @@ fun DefaultPreviewCreateNoteScreen() {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CreateNoteScreen(navController: NavController) {
 
@@ -35,14 +39,49 @@ fun CreateNoteScreen(navController: NavController) {
     }
 
     MyApp {
-        Column {
-            AppToolbarCompose(
-                secondaryAction = {
-                    viewModel.saveNoteOrUpdateNote(textState.value.text)
-                    navController.popBackStack()
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    modifier = Modifier.align(Alignment.CenterStart)
+                ) {
+                    ShortCutCompose(
+                        icon = R.drawable.ic_chevron_left
+                    ) {
+                        navController.popBackStack()
+                    }
+
+                    TitleBodyCompose(
+                        modifier = Modifier.padding(start = 6.dp),
+                        title = "2 Jan, 2022",
+                        body = "100 characters"
+                    )
                 }
+                Row(
+                    modifier = Modifier.align(Alignment.CenterEnd)
+                ) {
+                    ShortCutCompose(
+                        icon = R.drawable.ic_color_picker,
+                        modifier = Modifier.padding(end = 16.dp)
+                    ) {
+                        //TODO
+                    }
+                    ShortCutCompose(
+                        icon = R.drawable.ic_check,
+                    ) {
+                        viewModel.saveNoteOrUpdateNote(textState.value.text)
+                        navController.popBackStack()
+                    }
+                }
+            }
+
+            NewNoteTextField(
+                modifier = Modifier.padding(top = 16.dp),
+                textState = textState
             )
-            NewNoteTextField(textState)
         }
     }
 }

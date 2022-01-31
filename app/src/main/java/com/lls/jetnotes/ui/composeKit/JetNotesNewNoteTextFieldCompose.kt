@@ -18,34 +18,42 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lls.jetnotes.ui.theme.JetNotesTheme
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
 fun NewNoteTextFieldPreview() {
     JetNotesTheme {
-        NewNoteTextField(remember { mutableStateOf(TextFieldValue()) })
+        NewNoteTextField(textState = remember { mutableStateOf(TextFieldValue()) })
+    }
+}
+
+@Preview()
+@Composable
+fun NewNoteTextFieldPreviewDark() {
+    JetNotesTheme(darkTheme = true) {
+        NewNoteTextField(textState = remember { mutableStateOf(TextFieldValue()) })
     }
 }
 
 @Composable
-fun NewNoteTextField(textState: MutableState<TextFieldValue>) {
-    Surface(elevation = 4.dp) {
-        TextField(
-            value = textState.value,
-            onValueChange = {
-                textState.value = it
-            },
-            shape = RoundedCornerShape(10.dp),
-            colors = TextFieldDefaults.textFieldColors(
-                focusedIndicatorColor = Color.Transparent,
-                disabledIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
+fun NewNoteTextField(
+    modifier: Modifier = Modifier,
+    textState: MutableState<TextFieldValue>
+) {
+    TextField(
+        value = textState.value,
+        onValueChange = {
+            textState.value = it
+        },
+        shape = RoundedCornerShape(10.dp),
+        colors = TextFieldDefaults.textFieldColors(
+            focusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
 
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(16.dp),
-        )
-    }
+        ),
+        modifier = modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    )
 
 }
