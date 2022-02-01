@@ -1,5 +1,6 @@
 package com.lls.jetnotes.ui.screen.createNote
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
@@ -33,12 +34,22 @@ fun CreateNoteScreen(navController: NavController) {
 
     val textState: MutableState<TextFieldValue> = remember { mutableStateOf(TextFieldValue()) }
 
+    var showCustomDialog by remember { mutableStateOf(false) }
+
     navController.previousBackStackEntry?.arguments?.getInt("NOTE_ID")?.let { noteId ->
         viewModel.getNoteById(noteId)
         textState.value = TextFieldValue(viewModelState)
     }
 
     MyApp {
+
+        if (showCustomDialog) {
+            ColorPickerDialogCompose(
+                onColorPicked = { showCustomDialog = false },
+                onDismiss = { showCustomDialog = false }
+            )
+        }
+
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
@@ -49,10 +60,9 @@ fun CreateNoteScreen(navController: NavController) {
                     modifier = Modifier.align(Alignment.CenterStart)
                 ) {
                     ShortCutCompose(
-                        icon = R.drawable.ic_chevron_left
-                    ) {
-                        navController.popBackStack()
-                    }
+                        icon = R.drawable.ic_chevron_left,
+                        onClick = { navController.popBackStack() }
+                    )
 
                     TitleBodyCompose(
                         modifier = Modifier.padding(start = 6.dp),
@@ -65,16 +75,16 @@ fun CreateNoteScreen(navController: NavController) {
                 ) {
                     ShortCutCompose(
                         icon = R.drawable.ic_color_picker,
-                        modifier = Modifier.padding(end = 16.dp)
-                    ) {
-                        //TODO
-                    }
+                        modifier = Modifier.padding(end = 16.dp),
+                        onClick = { showCustomDialog = true }
+                    )
                     ShortCutCompose(
                         icon = R.drawable.ic_check,
-                    ) {
-                        viewModel.saveNoteOrUpdateNote(textState.value.text)
-                        navController.popBackStack()
-                    }
+                        onClick = {
+                            viewModel.saveNoteOrUpdateNote(textState.value.text)
+                            navController.popBackStack()
+                        }
+                    )
                 }
             }
 

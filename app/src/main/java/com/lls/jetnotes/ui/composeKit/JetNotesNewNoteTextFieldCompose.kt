@@ -1,10 +1,9 @@
 package com.lls.jetnotes.ui.composeKit
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -16,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.lls.jetnotes.ui.theme.Divider
 import com.lls.jetnotes.ui.theme.JetNotesTheme
 
 @Preview()
@@ -48,12 +48,14 @@ fun NewNoteTextField(
         colors = TextFieldDefaults.textFieldColors(
             focusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
+            unfocusedIndicatorColor = Color.Transparent,
+            backgroundColor = Color.Transparent
 
         ),
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight()
+            .border(1.dp, Divider, RoundedCornerShape(6.dp))
     )
 
 }

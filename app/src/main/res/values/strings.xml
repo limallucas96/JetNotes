@@ -4,5 +4,7 @@
     <string name="empty_notes_title">Get started</string>
     <string name="empty_notes_body">Write your first personal note, customize the background color, share it with friends and more!</string>
     <string name="notes">Notes</string>
+    <string name="dialog_color_picker_title">Pick up your note color</string>
+    <string name="dismiss">Dismiss</string>
 
 </resources>
