@@ -23,10 +23,13 @@ enum class NotesColor(val hex: String) {
     DEFAULT("#121212");
 
     companion object {
-        fun getColors() : List<NotesColor>  {
+        fun getColors(): List<NotesColor> {
             val colors = values().toMutableList()
             colors.removeLast()
             return colors
         }
+
+        fun fromHex(hexColor: String) = values().firstOrNull { it.hex.equals(hexColor, true) } ?: DEFAULT
+
     }
 }

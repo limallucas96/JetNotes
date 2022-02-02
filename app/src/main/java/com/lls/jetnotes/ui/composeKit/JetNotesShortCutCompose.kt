@@ -19,7 +19,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lls.jetnotes.R
+import com.lls.jetnotes.ui.extensions.parse
 import com.lls.jetnotes.ui.theme.JetNotesTheme
+import entities.NotesColor
 
 @ExperimentalMaterialApi
 @Composable
@@ -43,7 +45,7 @@ fun ShortCutComposePreviewDark() {
 @Composable
 fun ShortCutCompose(
     @DrawableRes icon: Int,
-    tintColor: Color? = null,
+    tintColor: String? = null,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -59,7 +61,15 @@ fun ShortCutCompose(
             modifier = Modifier.padding(10.dp),
             painter = painterResource(id = icon),
             contentDescription = "",
-            colorFilter = ColorFilter.tint(tintColor ?: Color.White)
+            colorFilter = ColorFilter.tint(getTintColor(tintColor.orEmpty()))
         )
+    }
+}
+
+private fun getTintColor(hexColor: String): Color {
+    return if (NotesColor.fromHex(hexColor) == NotesColor.DEFAULT) {
+        Color.White
+    } else {
+        Color.parse(hexColor)
     }
 }

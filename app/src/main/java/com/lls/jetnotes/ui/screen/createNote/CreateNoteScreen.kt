@@ -93,7 +93,7 @@ fun CreateNoteScreen(navController: NavController) {
                     TitleBodyCompose(
                         modifier = Modifier.padding(start = 6.dp),
                         title = viewModel.notesTextFlow.value.createDate.orEmpty(),
-                        body = stringResource(id = R.string.character, viewModel.notesTextFlow.value.noteSize)
+                        body = stringResource(id = R.string.character, textState.value.text.length)
                     )
                 }
                 Row(
@@ -101,7 +101,7 @@ fun CreateNoteScreen(navController: NavController) {
                 ) {
                     ShortCutCompose(
                         icon = R.drawable.ic_color_picker,
-                        tintColor = Color.parse(viewModel.notesTextFlow.value.noteColor),
+                        tintColor = viewModel.notesTextFlow.value.noteColor,
                         modifier = Modifier.padding(end = 8.dp),
                         onClick = { showCustomDialog = true }
                     )
