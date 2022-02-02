@@ -16,13 +16,14 @@ import com.lls.jetnotes.ui.extensions.parse
 import com.lls.jetnotes.ui.theme.JetNotesTheme
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
+import entities.Notes
 
 @ExperimentalMaterialApi
 @Preview
 @Composable
 fun NoteCardComposePreview() {
     JetNotesTheme {
-        NoteCardCompose("Note Preview", {}, {})
+        NoteCardCompose(Notes(noteText = "")) {}
     }
 }
 
@@ -31,15 +32,14 @@ fun NoteCardComposePreview() {
 @Composable
 fun NoteCardComposePreviewDark() {
     JetNotesTheme(darkTheme = true) {
-        NoteCardCompose("Note Preview", {}, {})
+        NoteCardCompose(Notes(noteText = "")) {}
     }
 }
 
 @ExperimentalMaterialApi
 @Composable
 fun NoteCardCompose(
-    note: String, onNoteClicked: () -> Unit,
-    onDeleteClicked: () -> Unit
+    note: Notes, onNoteClicked: () -> Unit
 ) {
     Surface(
         Modifier.absolutePadding(top = 8.dp, bottom = 4.dp)
@@ -51,7 +51,7 @@ fun NoteCardCompose(
                 .clickable { onNoteClicked.invoke() },
             shape = MaterialTheme.shapes.medium,
             elevation = 5.dp,
-            backgroundColor = Color.parse("#D14960")
+            backgroundColor = Color.parse(note.noteColor)
         ) {
             Row(
                 modifier = Modifier.padding(8.dp),
@@ -62,14 +62,14 @@ fun NoteCardCompose(
                         modifier = Modifier
                             .absolutePadding(bottom = 32.dp)
                             .align(Alignment.TopStart),
-                        text = note,
+                        text = note.noteText,
                         style = MaterialTheme.typography.body1,
                         color = MaterialTheme.colors.onSurface,
                     )
 
                     Text(
                         modifier = Modifier.align(Alignment.BottomEnd),
-                        text = "02/08/2020",
+                        text = note.createDate.orEmpty(),
                         style = MaterialTheme.typography.caption,
                         color = MaterialTheme.colors.onSurface,
                     )

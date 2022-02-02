@@ -28,10 +28,4 @@ class ListNotesScreenViewModel(private val notesUseCase: NotesUseCaseContract) :
 
     private fun getNotes() = notesUseCase.getAllNotes()
 
-    fun deleteNote(notesEntity: Notes) {
-        viewModelScope.launch {
-            notesUseCase.deleteNote(notesEntity)
-        }
-    }
-
 }

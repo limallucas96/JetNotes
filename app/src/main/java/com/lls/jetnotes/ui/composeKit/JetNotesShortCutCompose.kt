@@ -43,6 +43,7 @@ fun ShortCutComposePreviewDark() {
 @Composable
 fun ShortCutCompose(
     @DrawableRes icon: Int,
+    tintColor: Color? = null,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -58,7 +59,7 @@ fun ShortCutCompose(
             modifier = Modifier.padding(10.dp),
             painter = painterResource(id = icon),
             contentDescription = "",
-            colorFilter = ColorFilter.tint(Color.White)
+            colorFilter = ColorFilter.tint(tintColor ?: Color.White)
         )
     }
 }

@@ -15,7 +15,7 @@ import entities.Notes
 @Composable
 fun NotesListComposePreview() {
     JetNotesTheme {
-        NotesListCompose(listOf(), {}, {})
+        NotesListCompose(listOf()) {}
     }
 }
 
@@ -23,8 +23,7 @@ fun NotesListComposePreview() {
 @Composable
 fun NotesListCompose(
     notes: List<Notes>,
-    onNoteClicked: (Notes) -> Unit,
-    onDeleteClicked: (Notes) -> Unit
+    onNoteClicked: (Notes) -> Unit
 ) {
     if (notes.isEmpty()) {
         EmptyStateCompose()
@@ -34,9 +33,8 @@ fun NotesListCompose(
         ) {
             items(notes, key = { it }) { note ->
                 NoteCardCompose(
-                    note = note.noteText,
-                    onNoteClicked = { onNoteClicked.invoke(note) },
-                    onDeleteClicked = { onDeleteClicked.invoke(note) }
+                    note = note,
+                    onNoteClicked = { onNoteClicked.invoke(note) }
                 )
             }
         }

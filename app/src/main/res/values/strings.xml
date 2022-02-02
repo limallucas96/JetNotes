@@ -6,5 +6,10 @@
     <string name="notes">Notes</string>
     <string name="dialog_color_picker_title">Pick up your note color</string>
     <string name="dismiss">Dismiss</string>
+    <string name="character">%d characters</string>
+    <string name="dialog_delete_note_title">Delete note</string>
+    <string name="dialog_delete_note_body">Are you sure you want to delete your note?</string>
+    <string name="yes">Yes</string>
+    <string name="no_cancel">No, cancel</string>
 
 </resources>

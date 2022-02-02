@@ -58,8 +58,7 @@ fun ListNotesScreen(onCreateNewNote: (id: Int?) -> Unit = {}) {
                     style = MaterialTheme.typography.h5
                 )
                 NotesListCompose(notes = viewState,
-                    onNoteClicked = { onCreateNewNote.invoke(it.id) },
-                    onDeleteClicked = { viewModel.deleteNote(it) })
+                    onNoteClicked = { onCreateNewNote.invoke(it.id) })
             }
         }
     }

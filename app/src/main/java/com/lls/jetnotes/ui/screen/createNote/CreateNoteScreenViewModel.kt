@@ -11,19 +11,23 @@ import usecases.notes.NotesUseCaseContract
 
 class CreateNoteScreenViewModel(private val notesUseCase: NotesUseCaseContract) : ViewModel() {
 
-    private var _notesTextFlow = MutableStateFlow(String())
+    private var _notesTextFlow = MutableStateFlow(Notes(noteText = ""))
     private var _noteId: Int? = null
 
-    val notesTextFlow: StateFlow<String>
+    val notesTextFlow: StateFlow<Notes>
         get() = _notesTextFlow
 
 
     fun saveNoteOrUpdateNote(noteText: String) {
         if (noteText.trim().isNotEmpty()) {
             viewModelScope.launch {
-                val notes = _noteId?.let {
-                    Notes(id = it, noteText = noteText)
-                } ?: Notes(noteText = noteText)
+                val currentNote = _notesTextFlow.value
+                val notes = Notes(
+                    id = _noteId ?: 0,
+                    noteText = noteText,
+                    noteColor = currentNote.noteColor,
+                    noteSize = noteText.length
+                )
                 notesUseCase.insertNote(notes)
             }
         }
@@ -33,10 +37,20 @@ class CreateNoteScreenViewModel(private val notesUseCase: NotesUseCaseContract) 
         _noteId = noteId
         viewModelScope.launch {
             notesUseCase.getNoteById(noteId).collect { notes ->
-                notes.firstOrNull()?.noteText?.let { noteText ->
-                    _notesTextFlow.value = noteText
+                notes.firstOrNull()?.let { note ->
+                    _notesTextFlow.value = note
                 }
             }
+        }
+    }
+
+    fun updateColor(colorHex: String) {
+        _notesTextFlow.value.noteColor = colorHex
+    }
+
+    fun deleteNote() {
+        viewModelScope.launch {
+            notesUseCase.deleteNote(_notesTextFlow.value)
         }
     }
 

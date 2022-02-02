@@ -2,19 +2,25 @@ package com.lls.jetnotes.ui.composeKit
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lls.jetnotes.R
+import com.lls.jetnotes.ui.extensions.parse
 import com.lls.jetnotes.ui.theme.*
+import entities.NotesColor
 
 @ExperimentalMaterialApi
 @Composable
@@ -23,6 +29,7 @@ fun ColorPickerDialogComposePreview() {
     JetNotesTheme {
         ColorPickerDialogCompose(
             onColorPicked = {},
+            clearColor = {},
             onDismiss = {}
         )
     }
@@ -35,6 +42,7 @@ fun ColorPickerDialogComposePreviewDark() {
     JetNotesTheme(darkTheme = true) {
         ColorPickerDialogCompose(
             onColorPicked = {},
+            clearColor = {},
             onDismiss = {}
         )
     }
@@ -44,20 +52,38 @@ fun ColorPickerDialogComposePreviewDark() {
 @ExperimentalMaterialApi
 @Composable
 fun ColorPickerDialogCompose(
-    onColorPicked: (Color) -> Unit,
+    onColorPicked: (String) -> Unit,
+    clearColor: () -> Unit,
     onDismiss: () -> Unit
 ) {
 
-    val colors = listOf(
-        DarkTerraCotta, MeatBrown, BoogerBuster,
-        IguanaGreen, PurpleNavy, CyberGrape
-    )
+    val colors = NotesColor.getColors()
 
     AlertDialog(
         modifier = Modifier.padding(start = 16.dp, end = 16.dp),
         backgroundColor = MaterialTheme.colors.background,
         onDismissRequest = { onDismiss.invoke() },
-        title = { Text(text = stringResource(id = R.string.dialog_color_picker_title)) },
+        title = {
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = stringResource(id = R.string.dialog_color_picker_title),
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.align(Alignment.CenterStart)
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.ic_color_picker_off),
+                    contentDescription = "",
+                    colorFilter = ColorFilter.tint(Color.White),
+                    modifier = Modifier
+                        .size(16.dp)
+                        .align(Alignment.CenterEnd)
+                        .clickable { clearColor.invoke() }
+                )
+            }
+
+        },
         text = {
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -75,11 +101,11 @@ fun ColorPickerDialogCompose(
                             Canvas(
                                 modifier = Modifier
                                     .size(50.dp)
-                                    .clickable { onColorPicked.invoke(color) },
+                                    .clickable { onColorPicked.invoke(color.hex) },
                                 onDraw = {
                                     val size = 50.dp.toPx()
                                     drawCircle(
-                                        color = color,
+                                        color = Color.parse(color.hex),
                                         radius = size / 2f
                                     )
                                 })
