@@ -26,15 +26,14 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun DefaultPreviewListNotesScreen() {
     JetNotesTheme {
-        ListNotesScreen {}
+        ListNotesScreen()
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @InternalCoroutinesApi
 @Composable
-fun ListNotesScreen(onCreateNewNote: (id: Int?) -> Unit = {}) {
-    val viewModel = getViewModel<ListNotesScreenViewModel>()
+fun ListNotesScreen(onCreateNewNote: (id: Int?) -> Unit = {}, viewModel: ListNotesScreenViewModel = getViewModel()) {
 
     val viewState by viewModel.notesFlow.collectAsState()
 
@@ -57,7 +56,8 @@ fun ListNotesScreen(onCreateNewNote: (id: Int?) -> Unit = {}) {
                     text = stringResource(id = R.string.notes),
                     style = MaterialTheme.typography.h5
                 )
-                NotesListCompose(notes = viewState,
+                NotesListCompose(
+                    flowOfNotes = viewState,
                     onNoteClicked = { onCreateNewNote.invoke(it.id) })
             }
         }

@@ -58,10 +58,10 @@ fun NavGraphBuilder.addNotesList(
             fadeInAnimation(width)
         },
     ) {
-        ListNotesScreen { noteId ->
+        ListNotesScreen (onCreateNewNote = { noteId ->
             navController.currentBackStackEntry?.arguments = noteId?.let { Bundle().apply { putInt("NOTE_ID", it) } }
             navController.navigate(NavigationScreen.CreateNote.route)
-        }
+        })
     }
 }
 

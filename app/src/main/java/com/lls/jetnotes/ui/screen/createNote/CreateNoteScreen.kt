@@ -29,9 +29,7 @@ fun DefaultPreviewCreateNoteScreen() {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun CreateNoteScreen(navController: NavController) {
-
-    val viewModel = getViewModel<CreateNoteScreenViewModel>()
+fun CreateNoteScreen(navController: NavController, viewModel: CreateNoteScreenViewModel = getViewModel()) {
 
     val viewModelState by viewModel.notesTextFlow.collectAsState()
 
