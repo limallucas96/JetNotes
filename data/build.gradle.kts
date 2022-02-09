@@ -66,7 +66,7 @@ android {
 
 dependencies {
 
-    implementation(project(":domain"))
+    implementation(project(Modules.domain))
 
     // ROOM
     implementation(Room.runtime)

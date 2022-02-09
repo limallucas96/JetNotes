@@ -60,8 +60,8 @@ android {
 
 dependencies {
 
-    implementation(project(":data"))
-    implementation(project(":domain"))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
 
     implementation(AndroidX.core)
     implementation(AndroidX.appCompat)
