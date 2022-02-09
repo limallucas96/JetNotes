@@ -1,4 +1,4 @@
-package com.example.test.notes
+package com.lls.domain.notes
 
 import entities.Notes
 import kotlinx.coroutines.flow.Flow

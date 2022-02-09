@@ -1,4 +1,4 @@
-package com.example.data.base
+package com.lls.data.base
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

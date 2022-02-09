@@ -1,8 +1,8 @@
-package com.example.test.notes
+package com.lls.domain.notes
 
-import com.example.test.base.BaseUseCaseTest
-import com.example.test.notes.NotesMockProvider.getNoteIdMock
-import com.example.test.notes.NotesMockProvider.getNoteMock
+import com.lls.domain.base.BaseUseCaseTest
+import com.lls.domain.notes.NotesMockProvider.getNoteIdMock
+import com.lls.domain.notes.NotesMockProvider.getNoteMock
 import entities.Notes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull

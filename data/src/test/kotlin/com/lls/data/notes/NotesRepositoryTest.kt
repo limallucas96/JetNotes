@@ -1,8 +1,8 @@
-package com.example.data.notes
+package com.lls.data.notes
 
-import com.example.data.base.BaseDataTest
-import com.example.data.notes.NotesMockProvider.getNoteIdMock
-import com.example.data.notes.NotesMockProvider.getNoteMock
+import com.lls.data.base.BaseDataTest
+import com.lls.data.notes.NotesMockProvider.getNoteIdMock
+import com.lls.data.notes.NotesMockProvider.getNoteMock
 import entities.Notes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull

@@ -1,4 +1,4 @@
-package com.example.data.notes
+package com.lls.data.notes
 
 import entities.Notes
 
