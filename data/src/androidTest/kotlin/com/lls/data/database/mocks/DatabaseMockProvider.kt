@@ -1,4 +1,4 @@
-package com.lls.data.database
+package com.lls.data.database.mocks
 
 object MigrationOneToTwoMockProvider {
 
@@ -12,4 +12,8 @@ object MigrationOneToTwoMockProvider {
     const val MIGRATION_COLOR = "#FFFFFF"
     const val MIGRATION_DATE_STAMP = "08 Feb, 2022"
 
+}
+
+object DataSourceMockProvider {
+    const val FAKE_DATA_BASE_NAME = "FAKE_DATA_BASE_NAME"
 }

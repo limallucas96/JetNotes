@@ -2,13 +2,13 @@ package com.lls.data.database.migrations
 
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.lls.data.database.MigrationOneToTwoMockProvider.INITIAL_NOTE
-import com.lls.data.database.MigrationOneToTwoMockProvider.MIGRATION_COLOR
-import com.lls.data.database.MigrationOneToTwoMockProvider.MIGRATION_DATE_STAMP
-import com.lls.data.database.MigrationOneToTwoMockProvider.MIGRATION_NOTE
-import com.lls.data.database.MigrationOneToTwoMockProvider.NOTE_COLOR_COLUMN
-import com.lls.data.database.MigrationOneToTwoMockProvider.NOTE_DATE_COLUMN
-import com.lls.data.database.MigrationOneToTwoMockProvider.NOTE_TEXT_COLUMN
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.INITIAL_NOTE
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.MIGRATION_COLOR
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.MIGRATION_DATE_STAMP
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.MIGRATION_NOTE
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.NOTE_COLOR_COLUMN
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.NOTE_DATE_COLUMN
+import com.lls.data.database.mocks.MigrationOneToTwoMockProvider.NOTE_TEXT_COLUMN
 import com.lls.data.database.bases.AppBaseDatabaseTest
 import database.DbConstants.DATA_BASE_NAME
 import database.DbConstants.TABLE_NAME_NOTES
@@ -32,7 +32,7 @@ class Migration1To2DatabaseTest : AppBaseDatabaseTest() {
 
     @Test
     @Throws(IOException::class)
-    fun migrationOneToTwoTest() {
+    fun migration1To2Test() {
 
         var assertInitialNote = ""
         var assertMigrationNote = ""
