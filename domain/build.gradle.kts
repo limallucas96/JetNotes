@@ -11,14 +11,15 @@ java {
 dependencies {
 
     // KOIN
-    implementation(Libs.AndroidX.Koin.koinCore)
+    implementation(Koin.core)
 
     //COROUTINES
-    implementation(Libs.AndroidX.Kotlin.coroutinesCore)
+    implementation(Coroutines.core)
 
     //TEST
-    implementation(Libs.Test.junitCore)
-    testImplementation(Libs.Test.coroutinesTesting)
-    testImplementation(Libs.Test.mockitoTesting)
+    implementation(JUnit.core)
+
+    testImplementation(Coroutines.Testing.coroutines)
+    testImplementation(Mockito.kotlin)
 
 }

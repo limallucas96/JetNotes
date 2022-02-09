@@ -6,13 +6,11 @@ plugins {
 
 android {
 
-    compileSdk = Libs.compileSdk
+    compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
-        minSdk = Libs.minSdk
-        targetSdk = Libs.targetSdk
-//        versionCode = Libs.versionCode
-//        versionName = Libs.versionName
+        minSdk = ProjectConfig.minSdk
+        targetSdk = ProjectConfig.targetSdk
 
         //START: Room instrumented unity tests configs
         javaCompileOptions {
@@ -22,10 +20,6 @@ android {
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-//        configurations.all {
-//            resolutionStrategy.force("androidx.room:room-testing:2.4.1")
-//        }
         //END: Room instrumented unity tests configs
 
     }
@@ -46,7 +40,7 @@ android {
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
-            jvmTarget = Libs.jvtTarget
+            jvmTarget = ProjectConfig.jvtTarget
             useIR = true
         }
     }
@@ -75,23 +69,24 @@ dependencies {
     implementation(project(":domain"))
 
     // ROOM
-    implementation(Libs.AndroidX.Room.roomBase)
-    implementation("androidx.room:room-testing:2.4.1")
-    implementation("androidx.test:monitor:1.5.0")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.3")
-    kapt(Libs.AndroidX.Room.roomCompiler)
-    implementation(Libs.AndroidX.Room.roomKtx)
+    implementation(Room.runtime)
+    implementation(Room.ktx)
+    kapt(Room.compiler)
 
     // KOIN
-    implementation(Libs.AndroidX.Koin.koinCore)
-    implementation(Libs.AndroidX.Koin.koinAndroid)
+    implementation(Koin.core)
+    implementation(Koin.android)
 
     //TEST
-    testImplementation(Libs.Test.junitCore)
-    testImplementation(Libs.Test.coroutinesTesting)
-    testImplementation(Libs.Test.mockitoTesting)
+    testImplementation(JUnit.core)
+    testImplementation(Coroutines.Testing.coroutines)
+    testImplementation(Mockito.kotlin)
 
-    androidTestImplementation("androidx.test:runner:1.4.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation(AndroidX.Testing.runner)
+    androidTestImplementation(AndroidX.Testing.junitExt)
+    androidTestImplementation(AndroidX.Testing.junitExtKtx)
+
+    implementation(Room.Testing.core)
+    implementation(AndroidX.Testing.monitor)
 
 }
