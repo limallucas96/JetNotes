@@ -7,14 +7,14 @@ plugins {
 
 android {
 
-    compileSdk = Libs.compileSdk
+    compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.lls.jetnotes"
-        minSdk = Libs.minSdk
-        targetSdk = Libs.targetSdk
-        versionCode = Libs.versionCode
-        versionName = Libs.versionName
+        applicationId = ProjectConfig.appId
+        minSdk = ProjectConfig.minSdk
+        targetSdk = ProjectConfig.targetSdk
+        versionCode = ProjectConfig.versionCode
+        versionName = ProjectConfig.versionName
 
         testInstrumentationRunner = "com.example.jetnotes.base.KoinTestRunner"
         vectorDrawables {
@@ -37,7 +37,7 @@ android {
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
-            jvmTarget = Libs.jvtTarget
+            jvmTarget = ProjectConfig.jvtTarget
             useIR = true
         }
     }
@@ -47,8 +47,8 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.composeVersion
-        kotlinCompilerVersion = Libs.kotlinVersion
+        kotlinCompilerExtensionVersion = Compose.version
+        kotlinCompilerVersion = Kotlin.version
     }
 
     packagingOptions {
@@ -60,45 +60,45 @@ android {
 
 dependencies {
 
-    implementation(project(":data"))
-    implementation(project(":domain"))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
 
-    implementation(Libs.AndroidX.Core.ktx)
-    implementation(Libs.AndroidX.Appcompat.compat)
-    implementation(Libs.AndroidX.Material.material)
-    implementation(Libs.AndroidX.Compose.ui)
-    implementation(Libs.AndroidX.Compose.material)
-    implementation(Libs.AndroidX.Compose.toolingPreview)
+    implementation(AndroidX.core)
+    implementation(AndroidX.appCompat)
+    implementation(AndroidX.lifecycle)
+    implementation(AndroidX.viewModel)
 
-    implementation(Libs.AndroidX.LifeCycle.lifeCycle)
-    implementation(Libs.AndroidX.LifeCycle.viewModel)
-    implementation(Libs.AndroidX.LifeCycle.viewModelCompose)
+    implementation(Compose.ui)
+    implementation(Compose.material)
+    implementation(Compose.toolingPreview)
+    implementation(Compose.viewModel)
+    implementation(Compose.activity)
+    implementation(Compose.constraintLayout)
 
-    implementation(Libs.AndroidX.Activity.activity)
-    implementation(Libs.AndroidX.ConstraintLayout.constraintLayout)
-    implementation(Libs.AndroidX.Navigation.navigationAnimated)
+    implementation(Google.navigation)
+    implementation(Google.material)
 
-    implementation(Libs.AndroidX.Koin.koinCore)
-    implementation(Libs.AndroidX.Koin.koinAndroid)
-    implementation(Libs.AndroidX.Koin.koinCompose)
+    implementation(Koin.core)
+    implementation(Koin.android)
+    implementation(Koin.compose)
 
-    implementation(Libs.AndroidX.Room.roomBase)
-    kapt(Libs.AndroidX.Room.roomCompiler)
-    implementation(Libs.AndroidX.Room.roomKtx)
+    implementation(Room.runtime)
+    implementation(Room.ktx)
+    kapt(Room.compiler)
 
-    platform(Libs.AndroidX.Firebase.firebaseBom)
-    implementation(Libs.AndroidX.Firebase.firebaseAnalytics)
+    platform(Firebase.bom)
+    implementation(Firebase.analytics)
 
-    testImplementation(Libs.Test.junitCore)
-    androidTestImplementation(Libs.Test.junitExt)
-    androidTestImplementation(Libs.Test.espresso)
-    androidTestImplementation(Libs.Test.junit)
-    debugImplementation(Libs.Test.tooling)
+    testImplementation(JUnit.core)
+    testImplementation(Koin.Testing.test)
 
-    testImplementation(Libs.Test.koinTestingTools)
-    androidTestImplementation(Libs.Test.koinJUnit)
-    androidTestImplementation(Libs.Test.androidXTestCore)
-    androidTestImplementation(Libs.Test.androidXTestRules)
+    debugImplementation(Compose.Testing.tooling)
 
-    implementation(Libs.ThirdParty.swipeToReveal)
+    androidTestImplementation(AndroidX.Testing.core)
+    androidTestImplementation(AndroidX.Testing.rules)
+    androidTestImplementation(AndroidX.Testing.junitExt)
+    androidTestImplementation(AndroidX.Testing.espresso)
+    androidTestImplementation(Compose.Testing.junit)
+    androidTestImplementation(Koin.Testing.junit)
+
 }

@@ -9,8 +9,7 @@ import database.entities.NotesEntity
     entities = [
         (NotesEntity::class),
     ],
-    version = 1,
-    exportSchema = false
+    version = 2
 )
 
 abstract class AppDatabase : RoomDatabase() {

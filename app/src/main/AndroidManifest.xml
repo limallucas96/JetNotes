@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lls.jetnotes">
 
     <application
+        android:name=".JetNotesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".JetNotesApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetNotes">
         <activity
             android:name=".HomeActivity"
+            android:configChanges="orientation"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.JetNotes.NoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JetNotes.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

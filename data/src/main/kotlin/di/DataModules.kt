@@ -2,6 +2,8 @@ package di
 
 import androidx.room.Room
 import database.AppDatabase
+import database.DbConstants.DATA_BASE_NAME
+import database.migrations.MIGRATION_1_2
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import repository.NotesRepositoryContract
@@ -13,9 +15,9 @@ private val dataBaseModules = module {
         Room.databaseBuilder(
             androidContext(),
             AppDatabase::class.java,
-            "DATA_BASE_NAME"
+            DATA_BASE_NAME
         )
-            .fallbackToDestructiveMigration()
+            .addMigrations(MIGRATION_1_2)
             .build()
     }
 

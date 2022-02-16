@@ -6,13 +6,21 @@ plugins {
 
 android {
 
-    compileSdk = Libs.compileSdk
+    compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
-        minSdk = Libs.minSdk
-        targetSdk = Libs.targetSdk
-//        versionCode = Libs.versionCode
-//        versionName = Libs.versionName
+        minSdk = ProjectConfig.minSdk
+        targetSdk = ProjectConfig.targetSdk
+
+        //START: Room instrumented unity tests configs
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        //END: Room instrumented unity tests configs
 
     }
 
@@ -23,6 +31,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -31,7 +40,7 @@ android {
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
-            jvmTarget = Libs.jvtTarget
+            jvmTarget = ProjectConfig.jvtTarget
             useIR = true
         }
     }
@@ -41,24 +50,43 @@ android {
             excludes += ("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+
+    //START: Room instrumented unity tests configs
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
+    sourceSets {
+        getByName("androidTest").assets.srcDirs("$projectDir/schemas")
+    }
+    //END: Room instrumented unity tests configs
 }
 
 dependencies {
 
-    implementation(project(":domain"))
+    implementation(project(Modules.domain))
 
     // ROOM
-    implementation(Libs.AndroidX.Room.roomBase)
-    kapt(Libs.AndroidX.Room.roomCompiler)
-    implementation(Libs.AndroidX.Room.roomKtx)
+    implementation(Room.runtime)
+    implementation(Room.ktx)
+    kapt(Room.compiler)
 
     // KOIN
-    implementation(Libs.AndroidX.Koin.koinCore)
-    implementation(Libs.AndroidX.Koin.koinAndroid)
+    implementation(Koin.core)
+    implementation(Koin.android)
 
     //TEST
-    testImplementation(Libs.Test.junitCore)
-    testImplementation(Libs.Test.coroutinesTesting)
-    testImplementation(Libs.Test.mockitoTesting)
+    testImplementation(JUnit.core)
+    testImplementation(Coroutines.Testing.coroutines)
+    testImplementation(Mockito.kotlin)
+
+    androidTestImplementation(AndroidX.Testing.runner)
+    androidTestImplementation(AndroidX.Testing.junitExt)
+    androidTestImplementation(AndroidX.Testing.junitExtKtx)
+
+    implementation(Room.Testing.core)
+    implementation(AndroidX.Testing.monitor)
 
 }

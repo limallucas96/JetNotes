@@ -16,6 +16,7 @@
 
     <style name="Theme.JetNotes.NoActionBar">
         <item name="windowActionBar">false</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
