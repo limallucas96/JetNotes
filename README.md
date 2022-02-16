@@ -6,9 +6,9 @@ This application may look simple, but it has all of these small details that wil
 
 # Screen shots
 
-<img src="screenshots/note-color-pallet.png" width="200">
-<img src="screenshots/note-edit.png" width="200">
-<img src="screenshots/note-list.png" width="200">
+<img src="screenshots/note-list.jpeg" width="300"> <img src="screenshots/note-edit.jpeg" width="300"> <img src="screenshots/note-color-pallet.jpeg" width="300">
+
+
 
 # Backlog
 
