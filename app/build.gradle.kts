@@ -51,8 +51,9 @@ android {
         }
 
         getByName(SigningConfig.debug) {
-            applicationIdSuffix = ProjectConfig.debugApplicationIdSuffix
             isDebuggable = true
+            applicationIdSuffix = ProjectConfig.debugApplicationIdSuffix
+            signingConfig = signingConfigs.getByName(SigningConfig.debug)
         }
 
     }
