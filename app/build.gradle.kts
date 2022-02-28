@@ -1,8 +1,9 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -15,6 +16,7 @@ android {
         targetSdk = ProjectConfig.targetSdk
         versionCode = ProjectConfig.versionCode
         versionName = ProjectConfig.versionName
+        setProperty("archivesBaseName", versionName)
 
         testInstrumentationRunner = "com.example.jetnotes.base.KoinTestRunner"
         vectorDrawables {
@@ -22,13 +24,37 @@ android {
         }
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            )
+    signingConfigs {
+
+        create(SigningConfig.release) {
+            keyAlias = SigningConfig.Release.keyAlias
+            keyPassword = SigningConfig.Release.keyPassword
+            storeFile = file(SigningConfig.Release.storeFile)
+            storePassword = SigningConfig.Release.storePassword
         }
+
+        getByName(SigningConfig.debug) {
+            keyAlias = SigningConfig.Debug.keyAlias
+            keyPassword = SigningConfig.Debug.keyPassword
+            storeFile = file(SigningConfig.Debug.storeFile)
+            storePassword = SigningConfig.Debug.storePassword
+        }
+    }
+
+    buildTypes {
+
+        getByName(SigningConfig.release) {
+            isMinifyEnabled = false
+            isDebuggable = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName(SigningConfig.release)
+        }
+
+        getByName(SigningConfig.debug) {
+            applicationIdSuffix = ProjectConfig.debugApplicationIdSuffix
+            isDebuggable = true
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
