@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.api.BaseVariantOutputImpl
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -16,7 +14,6 @@ android {
         targetSdk = ProjectConfig.targetSdk
         versionCode = ProjectConfig.versionCode
         versionName = ProjectConfig.versionName
-        setProperty("archivesBaseName", versionName)
 
         testInstrumentationRunner = "com.example.jetnotes.base.KoinTestRunner"
         vectorDrawables {

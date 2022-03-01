@@ -3,11 +3,11 @@ import java.util.*
 
 object ProjectConfig {
 
-    const val appId = "com.lls.jetnotes"
+    const val appId = "com.llds.jetnotes"
     const val compileSdk = 31
     const val minSdk = 23
     const val targetSdk = 30
-    const val versionCode = 1
+    const val versionCode = 2
     const val jvtTarget = "1.8"
     const val debugApplicationIdSuffix = ".debug"
 
