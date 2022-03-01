@@ -28,4 +28,4 @@ build/
 .idea/
 app/release/
 app/debug/
-app/keys/
+app/keys/release.keystore.jks
