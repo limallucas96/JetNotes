@@ -26,3 +26,6 @@ build/
 .idea/workspace.xml
 .idea/libraries
 .idea/
+app/release/
+app/debug/
+app/keys/
