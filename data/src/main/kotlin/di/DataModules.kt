@@ -1,19 +1,32 @@
 package di
 
+import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import database.AppDatabase
 import database.DbConstants.DATA_BASE_NAME
+import database.datasource.NotesDataSource
 import database.migrations.MIGRATION_1_2
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
 import repository.NotesRepositoryContract
 import repository.local.NotesRepository
+import usecases.notes.NotesUseCase
+import usecases.notes.NotesUseCaseContract
+import javax.inject.Singleton
 
-private val dataBaseModules = module {
+@Module
+@InstallIn(SingletonComponent::class)
+object DataModules {
 
-    single {
-        Room.databaseBuilder(
-            androidContext(),
+    @Singleton
+    @Provides
+    fun providesRoomDatabase(@ApplicationContext context: Context): AppDatabase {
+        return Room.databaseBuilder(
+            context,
             AppDatabase::class.java,
             DATA_BASE_NAME
         )
@@ -21,16 +34,22 @@ private val dataBaseModules = module {
             .build()
     }
 
-    single { get<AppDatabase>().getNotesDataSource() }
+    @Singleton
+    @Provides
+    fun providesNotesDataSource(appDatabase: AppDatabase): NotesDataSource {
+        return appDatabase.getNotesDataSource()
+    }
 
-}
+    @Singleton
+    @Provides
+    fun providesNotesRepository(notesDataSource: NotesDataSource): NotesRepositoryContract {
+        return NotesRepository(notesDataSource)
+    }
 
-private val repositoryModules = module {
-
-    single<NotesRepositoryContract> {
-        NotesRepository(notesDataSource = get())
+    @Singleton
+    @Provides
+    fun providesNotesUseCase(notesRepositoryContract: NotesRepositoryContract) : NotesUseCaseContract {
+        return NotesUseCase(notesRepositoryContract)
     }
 
 }
-
-val dataModules = listOf(dataBaseModules, repositoryModules)

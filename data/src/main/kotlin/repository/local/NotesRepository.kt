@@ -8,8 +8,11 @@ import kotlinx.coroutines.flow.map
 import mappers.toNotesEntity
 import mappers.toNotesList
 import repository.NotesRepositoryContract
+import javax.inject.Inject
 
-class NotesRepository(private val notesDataSource: NotesDataSource) : NotesRepositoryContract {
+class NotesRepository @Inject constructor(
+    private val notesDataSource: NotesDataSource
+) : NotesRepositoryContract {
 
     override suspend fun insertNote(note: Notes) {
         notesDataSource.insertNote(note.toNotesEntity())

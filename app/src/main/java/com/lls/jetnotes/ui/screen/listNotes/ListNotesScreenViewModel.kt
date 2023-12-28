@@ -3,6 +3,7 @@ package com.lls.jetnotes.ui.screen.listNotes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lls.jetnotes.entities.FlowWrapper
+import dagger.hilt.android.lifecycle.HiltViewModel
 import entities.Notes
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,9 +12,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import usecases.notes.NotesUseCaseContract
+import javax.inject.Inject
 
 @InternalCoroutinesApi
-class ListNotesScreenViewModel(private val notesUseCase: NotesUseCaseContract) : ViewModel() {
+@HiltViewModel
+class ListNotesScreenViewModel @Inject constructor(
+    private val notesUseCase: NotesUseCaseContract
+) : ViewModel() {
 
     private val _notesFlow: MutableStateFlow<FlowWrapper<List<Notes>>> = MutableStateFlow(FlowWrapper.Loading)
 

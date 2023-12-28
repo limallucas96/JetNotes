@@ -1,8 +1,9 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("com.google.gms.google-services")
+    id(Plugins.application)
+    id(Plugins.kotlinAndroid)
+    id(Plugins.googleGsm)
+    id(Plugins.hilt)
+    id(Plugins.kotlinKapt)
 }
 
 android {
@@ -79,9 +80,9 @@ dependencies {
     implementation(Google.navigation)
     implementation(Google.material)
 
-    implementation(Koin.core)
-    implementation(Koin.android)
-    implementation(Koin.compose)
+    implementation(Hilt.hilt)
+    implementation(Hilt.navigationCompose)
+    kapt(Hilt.compiler)
 
     implementation(Room.runtime)
     implementation(Room.ktx)

@@ -16,11 +16,11 @@ import kotlinx.coroutines.InternalCoroutinesApi
 
 sealed class NavigationScreen(val route: String, val arguments: List<NamedNavArgument> = listOf()) {
 
-    data object NotesList : NavigationScreen(
+    object NotesList : NavigationScreen(
         route = "notesList"
     )
 
-    data object CreateNote : NavigationScreen(
+    object CreateNote : NavigationScreen(
         route = "createNote/{$NOTE_ID}"
     ) {
         fun createRoute(noteId: String? = null) = "createNote/${noteId}"

@@ -5,8 +5,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import repository.NotesRepositoryContract
+import javax.inject.Inject
 
-class NotesUseCase(private val notesRepository: NotesRepositoryContract) : NotesUseCaseContract {
+class NotesUseCase @Inject constructor(
+    private val notesRepository: NotesRepositoryContract
+) : NotesUseCaseContract {
 
     override suspend fun insertNote(note: Notes) {
         withContext(Dispatchers.IO) {

@@ -1,7 +1,8 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    id(Plugins.com_android_library)
+    id(Plugins.kotlinAndroid)
+    id(Plugins.hilt)
+    id(Plugins.kotlinKapt)
 }
 
 android {
@@ -74,9 +75,8 @@ dependencies {
     implementation(Room.ktx)
     kapt(Room.compiler)
 
-    // KOIN
-    implementation(Koin.core)
-    implementation(Koin.android)
+    implementation(Hilt.hilt)
+    kapt(Hilt.compiler)
 
     //TEST
     testImplementation(JUnit.core)

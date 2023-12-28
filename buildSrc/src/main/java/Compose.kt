@@ -1,6 +1,6 @@
 object Compose {
 
-    const val version = "1.5.4"
+    const val version = "1.4.3"
 
     const val ui = "androidx.compose.ui:ui:$version"
     const val material = "androidx.compose.material:material:$version"

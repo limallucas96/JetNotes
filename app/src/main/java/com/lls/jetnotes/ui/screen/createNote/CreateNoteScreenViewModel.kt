@@ -2,14 +2,19 @@ package com.lls.jetnotes.ui.screen.createNote
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import entities.Notes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import usecases.notes.NotesUseCaseContract
+import javax.inject.Inject
 
-class CreateNoteScreenViewModel(private val notesUseCase: NotesUseCaseContract) : ViewModel() {
+@HiltViewModel
+class CreateNoteScreenViewModel @Inject constructor(
+    private val notesUseCase: NotesUseCaseContract
+) : ViewModel() {
 
     private var _notesTextFlow = MutableStateFlow(Notes(noteText = ""))
     private var _noteId: Int? = null

@@ -1,6 +1,6 @@
 plugins {
-    id("java-library")
-    id("kotlin")
+    id(Plugins.javaLibrary)
+    id(Plugins.kotlin)
 }
 
 java {
@@ -11,8 +11,8 @@ java {
 
 dependencies {
 
-    // KOIN
-    implementation(Koin.core)
+    // HILT
+    implementation("javax.inject:javax.inject:1")
 
     //COROUTINES
     implementation(Coroutines.core)
