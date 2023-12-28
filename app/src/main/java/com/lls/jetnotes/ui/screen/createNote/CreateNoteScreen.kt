@@ -23,13 +23,13 @@ import entities.NotesColor
 @Composable
 fun DefaultPreviewCreateNoteScreen() {
     JetNotesTheme {
-        CreateNoteScreen(NavController(LocalContext.current))
+        CreateNoteScreen(NavController(LocalContext.current), 1)
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun CreateNoteScreen(navController: NavController, viewModel: CreateNoteScreenViewModel = getViewModel()) {
+fun CreateNoteScreen(navController: NavController, noteId: Int? = 1, viewModel: CreateNoteScreenViewModel = getViewModel()) {
 
     val viewModelState by viewModel.notesTextFlow.collectAsState()
 
@@ -38,8 +38,8 @@ fun CreateNoteScreen(navController: NavController, viewModel: CreateNoteScreenVi
     var showCustomDialog by remember { mutableStateOf(false) }
     var showDeleteDialog by remember { mutableStateOf(false) }
 
-    navController.previousBackStackEntry?.arguments?.getInt("NOTE_ID")?.let { noteId ->
-        viewModel.getNoteById(noteId)
+    noteId?.let { safeNoteId ->
+        viewModel.getNoteById(safeNoteId)
         textState.value = TextFieldValue(viewModelState.noteText)
     }
 

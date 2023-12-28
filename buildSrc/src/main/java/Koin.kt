@@ -1,6 +1,6 @@
 object Koin {
 
-    const val version = "3.1.2"
+    const val version = "3.5.3"
     const val koin = "koin"
 
     const val android = "io.insert-koin:koin-android:$version"

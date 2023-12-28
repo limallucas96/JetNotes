@@ -3,6 +3,7 @@ package repository.local
 import database.datasource.NotesDataSource
 import entities.Notes
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import mappers.toNotesEntity
 import mappers.toNotesList

@@ -10,6 +10,7 @@ import com.lls.jetnotes.ui.navigation.addCreateNote
 import com.lls.jetnotes.ui.navigation.addNotesList
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.lls.jetnotes.ui.screen.listNotes.ListNotesScreen
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
@@ -26,16 +27,11 @@ class HomeActivity : ComponentActivity() {
                 navController = navController,
                 startDestination = NavigationScreen.NotesList.route,
                 builder = {
-                    addNotesList(navController, SCREEN_SLIDE_OUT)
-                    addCreateNote(navController, SCREEN_SLIDE_IN)
+                    addNotesList(navController)
+                    addCreateNote(navController)
                 }
             )
         }
-    }
-
-    companion object {
-        private const val SCREEN_SLIDE_OUT = -300
-        private const val SCREEN_SLIDE_IN = 300
     }
 
 }

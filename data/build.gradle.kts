@@ -6,6 +6,8 @@ plugins {
 
 android {
 
+    namespace = "com.lls.data"
+
     compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
@@ -34,14 +36,13 @@ android {
 
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = ProjectConfig.javaVersion
+        targetCompatibility = ProjectConfig.javaVersion
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = ProjectConfig.jvtTarget
-            useIR = true
         }
     }
 

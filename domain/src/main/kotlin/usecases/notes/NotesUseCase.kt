@@ -1,13 +1,17 @@
 package usecases.notes
 
 import entities.Notes
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import repository.NotesRepositoryContract
 
 class NotesUseCase(private val notesRepository: NotesRepositoryContract) : NotesUseCaseContract {
 
     override suspend fun insertNote(note: Notes) {
-        notesRepository.insertNote(note)
+        withContext(Dispatchers.IO) {
+            notesRepository.insertNote(note)
+        }
     }
 
     override fun getNoteById(noteId: Int): Flow<List<Notes>> {
@@ -19,7 +23,9 @@ class NotesUseCase(private val notesRepository: NotesRepositoryContract) : Notes
     }
 
     override suspend fun deleteNote(note: Notes) {
-        notesRepository.deleteNote(note)
+        withContext(Dispatchers.IO) {
+            notesRepository.deleteNote(note)
+        }
     }
 
 }
